@@ -12,16 +12,13 @@ public class BasicGame implements GameLoop {
         SaxionApp.startGameLoop(new BasicGame(), 1000, 1000, 40);
     }
 
-    public SceneManager sceneManager;
-
     @Override
     public void init() {
-        sceneManager = new SceneManager();
     }
 
     @Override
     public void loop() {
-        sceneManager.loop();
+        SceneManager.getInstance().loop();
     }
 
     @Override
