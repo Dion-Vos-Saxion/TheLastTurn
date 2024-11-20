@@ -12,18 +12,16 @@ public class BasicGame implements GameLoop {
         SaxionApp.startGameLoop(new BasicGame(), 1000, 1000, 40);
     }
 
-    public MouseHandler mouseHandler;
     public SceneManager sceneManager;
 
     @Override
     public void init() {
         sceneManager = new SceneManager();
-        mouseHandler = new MouseHandler();
     }
 
     @Override
     public void loop() {
-        SaxionApp.drawText("Hola", 200, 200, 50);
+        sceneManager.loop();
     }
 
     @Override
@@ -33,7 +31,7 @@ public class BasicGame implements GameLoop {
 
     @Override
     public void mouseEvent(MouseEvent mouseEvent) {
-        mouseHandler.update(mouseEvent);
+        MouseHandler.getInstance().update(mouseEvent);
     }
 }
 

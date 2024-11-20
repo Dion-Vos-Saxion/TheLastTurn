@@ -1,5 +1,7 @@
 package utils;
 
-public class Scene {
 
+public abstract class Scene {
+    protected GameObject[] gameObjects;
+    public abstract void loop();
 }
