@@ -22,14 +22,16 @@ public final class SceneManager {
         scenes[1] = new GameScene();
 
         currentScene = scenes[0];
+        currentScene.init();
     }
 
     public void loop(){
+        SaxionApp.clear();
         currentScene.loop();
     }
 
     public void switchScene(int index){
-        SaxionApp.clear();
+        currentScene.unInit();
         currentScene = scenes[index];
         currentScene.init();
     }
