@@ -5,13 +5,10 @@ import utils.Scene;
 public class GameScene extends Scene{
 //    Player player;
 //    Enemy[] enemies;
-//    PlayerUI playerUI;
-    
-    public GameScene() {
-        gameObjects = new GameObject[3];
-
-        GameObject[] gameStates = new GameObject[3];
-    }
+//
+//    public GameScene(Player player, Enemy[] enemies) {
+//        
+//    }
 
     public void init(){
 
