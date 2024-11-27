@@ -3,10 +3,14 @@ import utils.GameObject;
 import utils.Scene;
 
 public class GameScene extends Scene{
-
+//    Player player;
+//    Enemy[] enemies;
+//    PlayerUI playerUI;
+    
     public GameScene() {
         gameObjects = new GameObject[3];
-//        gameObjects[0] = new
+
+        GameObject[] gameStates = new GameObject[3];
     }
 
     public void init(){

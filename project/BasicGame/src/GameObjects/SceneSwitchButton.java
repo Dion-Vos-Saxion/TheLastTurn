@@ -8,10 +8,10 @@ public class SceneSwitchButton extends GameObject {
     private int sceneIndex;
     private String imageFile;
     public SceneSwitchButton(int x, int y, int width, int height, String imageFile, int sceneIndex) {
-        x = 200;
-        y = 200;
-        width = 200;
-        height = 200;
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
         this.sceneIndex = sceneIndex;
         this.imageFile = imageFile;
     }
