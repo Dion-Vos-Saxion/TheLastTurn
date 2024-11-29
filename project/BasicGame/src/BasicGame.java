@@ -3,6 +3,7 @@ import nl.saxion.app.SaxionApp;
 import nl.saxion.app.interaction.GameLoop;
 import nl.saxion.app.interaction.KeyboardEvent;
 import nl.saxion.app.interaction.MouseEvent;
+import utils.BaseEnemy;
 import utils.MouseHandler;
 import utils.SceneManager;
 
@@ -14,6 +15,8 @@ public class BasicGame implements GameLoop {
 
     @Override
     public void init() {
+        BaseEnemy newEnemy = new BaseEnemy();
+
     }
 
     @Override
