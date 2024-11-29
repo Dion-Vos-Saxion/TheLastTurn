@@ -7,7 +7,7 @@ import nl.saxion.app.SaxionApp;
 public final class SceneManager {
     private static SceneManager instance;
 
-    private Scene[] scenes = new Scene[2];
+    private  final Scene[] scenes = new Scene[2];
     private Scene currentScene;
 
     public static SceneManager getInstance() {
