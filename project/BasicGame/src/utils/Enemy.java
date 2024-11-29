@@ -1,8 +1,8 @@
 package utils;
 
-public class EnemyConfig extends BaseEnemy {
+public class Enemy extends BaseEnemy {
 
-    public EnemyConfig(){
+    public Enemy(){
         this.enemyName = enemyName;
         this.enemySprite = enemySprite;
         this.blockCapability = false;
