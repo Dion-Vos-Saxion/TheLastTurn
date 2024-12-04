@@ -2,6 +2,8 @@ package utils;
 
 import nl.saxion.app.interaction.MouseEvent;
 
+import java.util.concurrent.TimeUnit;
+
 public final class MouseHandler {
     private static MouseHandler instance;
 
@@ -29,7 +31,14 @@ public final class MouseHandler {
         }
         if (mouseEvent.isMouseDragging())
             clickleft = false;
-        if (clickleft)
+        if (clickleft) {
+            try {
+                TimeUnit.MILLISECONDS.sleep(10);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+            holdleft = false;
             System.out.println(mouseX);
     }
 
@@ -41,6 +50,6 @@ public final class MouseHandler {
     }
 
     public boolean clicked(int targetX, int targetY, int width, int height) {
-        return hovering(targetX, targetY, width, height) && clickleft;
+        return hovering(targetX, targetY, width, height) && clickleft && !holdleft;
     }
 }
