@@ -1,4 +1,4 @@
 package utils;
 
-public abstract class BaseWeapon {
+public abstract class BaseWeapon extends BaseItem{
 }

@@ -1,4 +1,4 @@
 package utils;
 
-public abstract class BaseTrousers {
+public abstract class BaseTrousers extends BaseItem{
 }

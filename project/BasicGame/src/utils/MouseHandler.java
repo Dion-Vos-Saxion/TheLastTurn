@@ -6,8 +6,8 @@ public final class MouseHandler {
     private static MouseHandler instance;
 
     private int mouseX, mouseY;
-    private boolean clickleft;
-    private boolean holdleft = false;
+    private boolean clickLeft;
+    private boolean holdLeft = false;
 
     public static MouseHandler getInstance() {
         if (instance == null)
@@ -19,17 +19,17 @@ public final class MouseHandler {
     public void update(MouseEvent mouseEvent) {
         mouseX = mouseEvent.getX();
         mouseY = mouseEvent.getY();
-        if (mouseEvent.isLeftMouseButton() && !holdleft) {
-            clickleft = true;
-            holdleft = true;
+        if (mouseEvent.isLeftMouseButton() && !holdLeft) {
+            clickLeft = true;
+            holdLeft = true;
         }
         if (mouseEvent.isMouseUp()){
-            holdleft = false;
-            clickleft = false;
+            holdLeft = false;
+            clickLeft = false;
         }
         if (mouseEvent.isMouseDragging())
-            clickleft = false;
-        if (clickleft)
+            clickLeft = false;
+        if (clickLeft)
             System.out.println(mouseX);
     }
 
@@ -41,6 +41,6 @@ public final class MouseHandler {
     }
 
     public boolean clicked(int targetX, int targetY, int width, int height) {
-        return hovering(targetX, targetY, width, height) && clickleft;
+        return hovering(targetX, targetY, width, height) && clickLeft;
     }
 }

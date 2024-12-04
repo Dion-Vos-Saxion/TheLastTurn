@@ -1,5 +1,6 @@
 package utils;
 
+import GameObjects.Player;
 import Scenes.GameScene;
 import Scenes.MenuScene;
 import nl.saxion.app.SaxionApp;
@@ -19,7 +20,7 @@ public final class SceneManager {
 
     public SceneManager(){
         scenes[0] = new MenuScene();
-        scenes[1] = new GameScene();
+        scenes[1] = new GameScene(new Player(300, 300, 300, 300, ""));
 
         currentScene = scenes[0];
         currentScene.init();

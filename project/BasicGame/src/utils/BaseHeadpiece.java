@@ -1,4 +1,4 @@
 package utils;
 
-public abstract class BaseHeadpiece {
+public abstract class BaseHeadpiece extends BaseItem {
 }
