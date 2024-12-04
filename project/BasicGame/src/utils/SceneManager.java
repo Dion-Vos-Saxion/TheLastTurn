@@ -1,13 +1,14 @@
 package utils;
 
 import Scenes.GameScene;
+import Scenes.MapScene;
 import Scenes.MenuScene;
 import nl.saxion.app.SaxionApp;
 
 public final class SceneManager {
     private static SceneManager instance;
 
-    private Scene[] scenes = new Scene[2];
+    private Scene[] scenes = new Scene[3];
     private Scene currentScene;
 
     public static SceneManager getInstance() {
@@ -20,6 +21,7 @@ public final class SceneManager {
     public SceneManager(){
         scenes[0] = new MenuScene();
         scenes[1] = new GameScene();
+        scenes[2] = new MapScene();
 
         currentScene = scenes[0];
     }
