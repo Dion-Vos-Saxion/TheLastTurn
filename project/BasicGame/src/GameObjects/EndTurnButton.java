@@ -13,7 +13,7 @@ public class EndTurnButton extends GameObject {
         this.y = y;
         this.width = width;
         this.height = height;
-
+        this.sprite = sprite;
     }
 
     public void init() {

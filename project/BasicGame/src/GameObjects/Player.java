@@ -38,11 +38,11 @@ public class Player extends GameObject {
     }
 
     public void loop(){
-        drawPlayer();
-        headpiece.drawAbilities(200, 200);
-        chestArmor.drawAbilities(200, 200);
-        trousers.drawAbilities(200, 200);
-        weapon.drawAbilities(200, 200);
+//        drawPlayer();
+//        headpiece.drawAbilities(200, 200);
+//        chestArmor.drawAbilities(200, 200);
+//        trousers.drawAbilities(200, 200);
+//        weapon.drawAbilities(200, 200);
     }
 
     public void drawPlayer(){
