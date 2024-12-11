@@ -1,22 +1,28 @@
 package Scenes;
+import Enemies.Minotaur;
 import nl.saxion.app.SaxionApp;
-import utils.BaseItem;
-import utils.GameObject;
-import utils.MouseHandler;
-import utils.Scene;
+import utils.*;
 import GameObjects.*;
 
 public class GameScene extends Scene{
-//    private final Player player;
-    private final EndTurnButton endTurnButton;
+    private Player player;
+    private BaseEnemy enemy;
+
+    private EndTurnButton endTurnButton;
     private Turn currentTurn;
     private Turn playerTurn;
     private Turn enemyTurn;
 
-    public GameScene(Player player) {
-        playerTurn = new PlayerTurn(player, this);
-        enemyTurn = new EnemyTurn(player, this);
+    private int level;
+
+    public GameScene(Player player, int level) {
+        playerTurn = new PlayerTurn(player);
+        enemyTurn = new EnemyTurn(player);
         currentTurn = playerTurn;
+
+        //level later sets the enemy difficulty and which you can see.
+        this.level = level;
+        enemy = new Minotaur(200, 200, 200, 200);
 
         endTurnButton = new EndTurnButton(200, 200, 200, 200, "resources/Sprites/end-turn-placeholder.jpg");
         gameObjects = new GameObject[3];
@@ -24,8 +30,7 @@ public class GameScene extends Scene{
         gameObjects[1] = endTurnButton;
         gameObjects[2] = player;
 
-//        this.player = player;
-//        this.enemies = enemies;
+        this.player = player;
     }
 
     public void init(){
@@ -36,7 +41,6 @@ public class GameScene extends Scene{
         for (GameObject gameObject : gameObjects)
             gameObject.loop();
         currentTurn.loop();
-
     }
 
     public void unInit(){
@@ -50,13 +54,11 @@ public class GameScene extends Scene{
 
     private class PlayerTurn extends Turn{
 
-//        Enemy enemy
+        BaseEnemy enemy;
         Player player;
-        GameScene gameScene;
 
-        public PlayerTurn(Player player, GameScene gameScene) {
+        public PlayerTurn(Player player) {
             this.player = player;
-            this.gameScene = gameScene;
         }
 
         public void loop() {
@@ -67,22 +69,23 @@ public class GameScene extends Scene{
                 }
             }
 
-            if (gameScene.endTurnButton.pressed())
+            if (endTurnButton.pressed())
                 currentTurn.NextTurn();
+
+            //if enemy is dead change scene
         }
 
         public void NextTurn() {
-            gameScene.currentTurn = gameScene.enemyTurn;
+            currentTurn = enemyTurn;
         }
     }
 
     private class EnemyTurn extends Turn{
         Player player;
-        GameScene gameScene;
+        BaseEnemy enemy;
 
-        public EnemyTurn(Player player, GameScene gameScene) {
+        public EnemyTurn(Player player) {
             this.player = player;
-            this.gameScene = gameScene;
         }
 
         public void loop() {
@@ -92,7 +95,7 @@ public class GameScene extends Scene{
         }
 
         public void NextTurn() {
-            gameScene.currentTurn = gameScene.playerTurn;
+            currentTurn = playerTurn;
         }
     }
 }
