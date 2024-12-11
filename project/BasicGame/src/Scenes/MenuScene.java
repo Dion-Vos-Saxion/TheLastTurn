@@ -1,5 +1,6 @@
 package Scenes;
 import GameObjects.*;
+import nl.saxion.app.SaxionApp;
 import utils.*;
 
 public class MenuScene extends Scene{
@@ -13,12 +14,18 @@ public class MenuScene extends Scene{
     }
 
     public void init() {
+        SaxionApp.playSound("resources/Sounds/Song X gon.wav", true);
         for (GameObject gameObject : gameObjects)
             gameObject.init();
+        SaxionApp.stopSound("resources/Sounds/Song X gon.wav");
     }
 
     public void loop() {
         for (GameObject gameObject : gameObjects)
             gameObject.loop();
+    }
+
+    public void unInit(){
+        SaxionApp.stopSound("resources/Sounds/Song X gon.wav");
     }
 }
