@@ -5,7 +5,7 @@ import utils.*;
 public class MapScene extends Scene{
 
     public MapScene() {
-        gameObjects = new GameObject[12];
+        gameObjects = new GameObject[1];
         gameObjects[0] = new GameImage(512, 512, 1024,1024, "");
     }
 
@@ -19,5 +19,10 @@ public class MapScene extends Scene{
     public void loop() {
     // while gameScene() is initialized
         // implement
+    }
+
+    @Override
+    public void unInit() {
+
     }
 }

@@ -7,6 +7,7 @@ import utils.*;
 public class Player extends GameObject {
 
     private int health;
+    private int block;
 
     public BaseHeadpiece headpiece;
     public BaseChestArmor chestArmor;
@@ -15,17 +16,17 @@ public class Player extends GameObject {
 
     public BaseItem[] items;
 
-    public int[][] UISlots = {{2, 2}, {5, 5}};
-    private int[]  UIButtonsSize = {200, 300};
+    public int[][] UISlots = {{50, 800}, {5, 5}, {}, {}, {}, {}};
+    private int[]  UIButtonsSize = {241, 90};
 
-    String sprite;
+    String sprite = ;
+    String UIBackgroundsprite = ;
 
-    public Player(int x, int y, int width, int height, String sprite) {
+    public Player(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        this.sprite = sprite;
         headpiece = new BasicHeadpiece();
         chestArmor = new BasicChestArmor(UISlots[0][0], UISlots[0][1], UIButtonsSize[0], UIButtonsSize[1]);
         trousers = new BasicTrousers();
@@ -40,12 +41,24 @@ public class Player extends GameObject {
     public void loop(){
 //        drawPlayer();
 //        headpiece.drawAbilities(200, 200);
-//        chestArmor.drawAbilities(200, 200);
+        chestArmor.drawAbilities();
 //        trousers.drawAbilities(200, 200);
 //        weapon.drawAbilities(200, 200);
     }
 
+    public void GainBlock(int block){
+        this.block += block;
+    }
+
+    public void LoseBlock(){
+        block = 0;
+    }
+
     public void drawPlayer(){
         SaxionApp.drawImage(sprite,x - width / 2, y - height / 2, width, height);
+    }
+
+    public void drawUI(){
+        SaxionApp.drawImage(UIBackgroundsprite, x, , 999, 408);
     }
 }

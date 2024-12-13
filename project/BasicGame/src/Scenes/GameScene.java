@@ -24,7 +24,7 @@ public class GameScene extends Scene{
         this.level = level;
         enemy = new Minotaur(200, 200, 200, 200);
 
-        endTurnButton = new EndTurnButton(200, 200, 200, 200, "resources/Sprites/end-turn-placeholder.jpg");
+        endTurnButton = new EndTurnButton(900, 900, 152, 68, "resources/Sprites/UI elements/End turn Button.png");
         gameObjects = new GameObject[3];
         gameObjects[0] = new GameImage(512, 512, 1024, 1024, "resources/Sprites/Fight-Background-1.png");
         gameObjects[1] = endTurnButton;
@@ -48,6 +48,7 @@ public class GameScene extends Scene{
     }
 
     private abstract class Turn{
+        public abstract void StartTurn();
         public abstract void loop();
         public abstract void NextTurn();
     }
@@ -61,16 +62,22 @@ public class GameScene extends Scene{
             this.player = player;
         }
 
+        public void StartTurn(){
+            player.LoseBlock();
+        }
+
         public void loop() {
             for (BaseItem item : player.items) {
                 if (MouseHandler.getInstance().clicked(item.x, item.y, item.width, item.height)){
-                    //enemy take damage
+                    enemy.TakeDamage(item.ability.attack);
+                    player.GainBlock(item.ability.defense);
                     System.out.println("Damaging enemy using " + item.ability.name);
                 }
             }
 
-            if (endTurnButton.pressed())
+            if (endTurnButton.pressed()){
                 currentTurn.NextTurn();
+            }
 
             //if enemy is dead change scene
         }
@@ -88,9 +95,13 @@ public class GameScene extends Scene{
             this.player = player;
         }
 
+        public void StartTurn(){
+
+        }
+
         public void loop() {
             //damage player
-            System.out.println("Damaging player");
+            System.out.println("Enemy Turn");
             NextTurn();
         }
 

@@ -4,7 +4,7 @@ import utils.BaseTrousers;
 
 public class BasicTrousers extends BaseTrousers {
 
-    public void drawAbilities(int x, int y) {
+    public void drawAbilities() {
 
     }
 
