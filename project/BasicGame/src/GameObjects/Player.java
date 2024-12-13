@@ -19,8 +19,8 @@ public class Player extends GameObject {
     public int[][] UISlots = {{50, 800}, {5, 5}, {}, {}, {}, {}};
     private int[]  UIButtonsSize = {241, 90};
 
-    String sprite = ;
-    String UIBackgroundsprite = ;
+    String sprite = "resources/Sprites/Enemies/Minotaur.png";
+    String UIBackgroundSprite = "resources/Sprites/UI elements/Border UI.png";
 
     public Player(int x, int y, int width, int height) {
         this.x = x;
@@ -39,7 +39,8 @@ public class Player extends GameObject {
     }
 
     public void loop(){
-//        drawPlayer();
+        drawPlayer();
+        drawUI();
 //        headpiece.drawAbilities(200, 200);
         chestArmor.drawAbilities();
 //        trousers.drawAbilities(200, 200);
@@ -59,6 +60,6 @@ public class Player extends GameObject {
     }
 
     public void drawUI(){
-        SaxionApp.drawImage(UIBackgroundsprite, x, , 999, 408);
+        SaxionApp.drawImage(UIBackgroundSprite, 12, 600, 999, 408);
     }
 }
