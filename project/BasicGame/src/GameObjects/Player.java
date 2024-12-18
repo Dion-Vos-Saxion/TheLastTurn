@@ -16,7 +16,7 @@ public class Player extends GameObject {
 
     public BaseItem[] items;
 
-    public int[][] UISlots = {{50, 800}, {5, 5}, {}, {}, {}, {}};
+    public int[][] UISlots = {{50, 625}, {50, 762}, {50, 900}, {375, 625}, {375, 752}, {375, 900}};
     private int[]  UIButtonsSize = {241, 90};
 
     String sprite = "resources/Sprites/Enemies/Minotaur.png";
@@ -27,10 +27,10 @@ public class Player extends GameObject {
         this.y = y;
         this.width = width;
         this.height = height;
-        headpiece = new BasicHeadpiece();
-        chestArmor = new BasicChestArmor(UISlots[0][0], UISlots[0][1], UIButtonsSize[0], UIButtonsSize[1]);
-        trousers = new BasicTrousers();
-        weapon = new BasicWeapon();
+        headpiece = new BasicHeadpiece(UISlots[0][0], UISlots[0][1], UIButtonsSize[0], UIButtonsSize[1]);
+        chestArmor = new BasicChestArmor(UISlots[1][0], UISlots[1][1], UIButtonsSize[0], UIButtonsSize[1]);
+        trousers = new BasicTrousers(UISlots[2][0], UISlots[2][1], UIButtonsSize[0], UIButtonsSize[1]);
+        weapon = new BasicWeapon(UISlots[3][0], UISlots[3][1], UIButtonsSize[0], UIButtonsSize[1]);
         items = new BaseItem[]{headpiece, chestArmor, trousers, weapon};
     }
 
@@ -41,10 +41,6 @@ public class Player extends GameObject {
     public void loop(){
         drawPlayer();
         drawUI();
-//        headpiece.drawAbilities(200, 200);
-        chestArmor.drawAbilities();
-//        trousers.drawAbilities(200, 200);
-//        weapon.drawAbilities(200, 200);
     }
 
     public void GainBlock(int block){
@@ -61,5 +57,7 @@ public class Player extends GameObject {
 
     public void drawUI(){
         SaxionApp.drawImage(UIBackgroundSprite, 12, 600, 999, 408);
+        for (BaseItem item : items)
+            item.drawAbilities();
     }
 }
