@@ -1,12 +1,17 @@
 package Items;
 
+import utils.BaseAbility;
 import utils.BaseWeapon;
 
 public class BasicWeapon extends BaseWeapon {
 
-    @Override
-    public void drawAbilities(int x, int y) {
-
+    public BasicWeapon(int x, int y, int width, int height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        name = "Basic Weapon";
+        ability = new BaseAbility("Block", 0, 5, 2);
     }
 
     @Override

@@ -7,6 +7,7 @@ import utils.*;
 public class Player extends GameObject {
 
     private int health;
+    private int block;
 
     public BaseHeadpiece headpiece;
     public BaseChestArmor chestArmor;
@@ -15,21 +16,21 @@ public class Player extends GameObject {
 
     public BaseItem[] items;
 
-    public int[][] UISlots = {{2, 2}, {5, 5}};
-    private int[]  UIButtonsSize = {200, 300};
+    public int[][] UISlots = {{50, 625}, {50, 762}, {50, 900}, {375, 625}, {375, 752}, {375, 900}};
+    private int[]  UIButtonsSize = {241, 90};
 
-    String sprite;
+    String sprite = "resources/Sprites/Enemies/Minotaur.png";
+    String UIBackgroundSprite = "resources/Sprites/UI elements/Border UI.png";
 
-    public Player(int x, int y, int width, int height, String sprite) {
+    public Player(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        this.sprite = sprite;
-        headpiece = new BasicHeadpiece();
-        chestArmor = new BasicChestArmor(UISlots[0][0], UISlots[0][1], UIButtonsSize[0], UIButtonsSize[1]);
-        trousers = new BasicTrousers();
-        weapon = new BasicWeapon();
+        headpiece = new BasicHeadpiece(UISlots[0][0], UISlots[0][1], UIButtonsSize[0], UIButtonsSize[1]);
+        chestArmor = new BasicChestArmor(UISlots[1][0], UISlots[1][1], UIButtonsSize[0], UIButtonsSize[1]);
+        trousers = new BasicTrousers(UISlots[2][0], UISlots[2][1], UIButtonsSize[0], UIButtonsSize[1]);
+        weapon = new BasicWeapon(UISlots[3][0], UISlots[3][1], UIButtonsSize[0], UIButtonsSize[1]);
         items = new BaseItem[]{headpiece, chestArmor, trousers, weapon};
     }
 
@@ -38,14 +39,25 @@ public class Player extends GameObject {
     }
 
     public void loop(){
-//        drawPlayer();
-//        headpiece.drawAbilities(200, 200);
-//        chestArmor.drawAbilities(200, 200);
-//        trousers.drawAbilities(200, 200);
-//        weapon.drawAbilities(200, 200);
+        drawPlayer();
+        drawUI();
+    }
+
+    public void GainBlock(int block){
+        this.block += block;
+    }
+
+    public void LoseBlock(){
+        block = 0;
     }
 
     public void drawPlayer(){
         SaxionApp.drawImage(sprite,x - width / 2, y - height / 2, width, height);
+    }
+
+    public void drawUI(){
+        SaxionApp.drawImage(UIBackgroundSprite, 12, 600, 999, 408);
+        for (BaseItem item : items)
+            item.drawAbilities();
     }
 }
