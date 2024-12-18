@@ -8,6 +8,8 @@ public class Player extends GameObject {
 
     private int health;
     private int block;
+    private int maxStamina = 10;
+    public int stamina = maxStamina;
 
     public BaseHeadpiece headpiece;
     public BaseChestArmor chestArmor;
@@ -15,8 +17,8 @@ public class Player extends GameObject {
     public BaseWeapon weapon;
 
     public BaseItem[] items;
-
-    public int[][] UISlots = {{50, 625}, {50, 762}, {50, 900}, {375, 625}, {375, 752}, {375, 900}};
+//    {50, 625}
+    public int[][] UISlots = {{150, 665}, {150, 802}, {150, 940}, {490, 665}, {490, 802}, {490, 940}};
     private int[]  UIButtonsSize = {241, 90};
 
     String sprite = "resources/Sprites/Enemies/Minotaur.png";
@@ -49,6 +51,10 @@ public class Player extends GameObject {
 
     public void LoseBlock(){
         block = 0;
+    }
+
+    public void RegainStamina(){
+        stamina = maxStamina;
     }
 
     public void drawPlayer(){

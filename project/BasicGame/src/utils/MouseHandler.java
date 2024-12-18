@@ -2,8 +2,6 @@ package utils;
 
 import nl.saxion.app.interaction.MouseEvent;
 
-import java.util.concurrent.TimeUnit;
-
 public final class MouseHandler {
     private static MouseHandler instance;
 
@@ -21,6 +19,7 @@ public final class MouseHandler {
     public void update(MouseEvent mouseEvent) {
         mouseX = mouseEvent.getX();
         mouseY = mouseEvent.getY();
+
         if (mouseEvent.isLeftMouseButton() && !holdLeft) {
             clickLeft = true;
             holdLeft = true;
@@ -33,6 +32,10 @@ public final class MouseHandler {
             clickLeft = false;
         if (clickLeft)
             System.out.println(mouseX);
+    }
+
+    public void afterupdate(){
+        clickLeft = false;
     }
 
     public boolean hovering(int targetX, int targetY, int width, int height) {

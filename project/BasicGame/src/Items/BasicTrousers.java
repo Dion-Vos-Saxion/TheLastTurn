@@ -11,7 +11,7 @@ public class BasicTrousers extends BaseTrousers {
         this.width = width;
         this.height = height;
         name = "Basic Trousers";
-        ability = new BaseAbility("Block", 0, 5, 2);
+        ability = new BaseAbility("Kick", 2, 3, 2, 70);
     }
 
     @Override

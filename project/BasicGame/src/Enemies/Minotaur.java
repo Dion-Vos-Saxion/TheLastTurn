@@ -12,7 +12,7 @@ public class Minotaur extends BaseEnemy {
         attacks = new int[]{11, 5, 3};
         blocks = new int[]{22, 2, 7};
         enemyName = "Minotaur";
-        sprite = "";
+        sprite = "resources/Sprites/Enemies/Minotaur.png";
     }
 
     public void init() {

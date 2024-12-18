@@ -11,7 +11,7 @@ public class BasicWeapon extends BaseWeapon {
         this.width = width;
         this.height = height;
         name = "Basic Weapon";
-        ability = new BaseAbility("Block", 0, 5, 2);
+        ability = new BaseAbility("Stab", 5, 0, 2, 60);
     }
 
     @Override

@@ -11,7 +11,7 @@ public class BasicHeadpiece extends BaseHeadpiece {
         this.width = width;
         this.height = height;
         name = "Basic Head Piece";
-        ability = new BaseAbility("Block", 0, 5, 2);
+        ability = new BaseAbility("Brace", 0, 3, 2, 100);
     }
 
     @Override

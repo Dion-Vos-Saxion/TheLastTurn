@@ -14,7 +14,7 @@ public class BasicChestArmor extends BaseChestArmor {
         this.width = width;
         this.height = height;
         name = "Basic Chest Armor";
-        ability = new BaseAbility("Block", 0, 5, 2);
+        ability = new BaseAbility("Block", 0, 5, 2, 80);
     }
 
     public void loop() {

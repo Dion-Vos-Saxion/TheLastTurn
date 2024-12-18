@@ -20,6 +20,7 @@ public class BasicGame implements GameLoop {
     public void loop() {
         SaxionApp.clear();
         SceneManager.getInstance().loop();
+        MouseHandler.getInstance().afterupdate();
     }
 
     @Override
