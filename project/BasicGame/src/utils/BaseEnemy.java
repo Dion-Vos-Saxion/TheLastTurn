@@ -1,6 +1,9 @@
 package utils;
 
+import GameObjects.GaugeBar;
 import nl.saxion.app.SaxionApp;
+
+import java.awt.*;
 
 public abstract class BaseEnemy extends GameObject {
     public int block;
@@ -31,9 +34,5 @@ public abstract class BaseEnemy extends GameObject {
 
     public boolean IsDead() {
         return health <= 0;
-    }
-
-    public void drawEnemy(){
-        healthBar.loop();
     }
 }

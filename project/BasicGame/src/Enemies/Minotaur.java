@@ -41,6 +41,7 @@ public class Minotaur extends BaseEnemy {
     public void loop() {
         // Update de animatie bij elke loop
         animator.loop();
+        healthBar.loop();
     }
 
     @Override
