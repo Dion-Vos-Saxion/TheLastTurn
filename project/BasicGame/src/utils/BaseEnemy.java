@@ -1,9 +1,6 @@
 package utils;
 
-import GameObjects.GaugeBar;
 import nl.saxion.app.SaxionApp;
-
-import java.awt.*;
 
 public abstract class BaseEnemy extends GameObject {
     public int block;
@@ -37,7 +34,6 @@ public abstract class BaseEnemy extends GameObject {
     }
 
     public void drawEnemy(){
-        SaxionApp.drawImage(sprite,x - width / 2, y - height / 2, width, height);
         healthBar.loop();
     }
 }

@@ -1,18 +1,17 @@
 package Scenes;
+
 import Enemies.Minotaur;
 import nl.saxion.app.SaxionApp;
 import utils.*;
 import GameObjects.*;
 
-public class GameScene extends Scene{
+public class GameScene extends Scene {
     private Player player;
     private BaseEnemy enemy;
-
     private EndTurnButton endTurnButton;
     private Turn currentTurn;
     private Turn playerTurn;
     private Turn enemyTurn;
-
     private int level;
 
     public GameScene(Player player, int level) {
@@ -20,7 +19,6 @@ public class GameScene extends Scene{
         enemyTurn = new EnemyTurn();
         currentTurn = playerTurn;
 
-        //level later sets the enemy difficulty and which you can see.
         this.level = level;
         this.player = player;
         enemy = new Minotaur(600, 300, 300, 300);
@@ -35,21 +33,23 @@ public class GameScene extends Scene{
 
     }
 
-    public void init(){
-
+    public void init() {
+        // Eventuele extra initialisatie kan hier gebeuren
     }
 
-    public void loop(){
-        for (GameObject gameObject : gameObjects)
-            gameObject.loop();
+    public void loop() {
+        for (GameObject gameObject : gameObjects) {
+            gameObject.loop(); // Roep de loop methode aan om logica van elk object uit te voeren
+            gameObject.draw(); // Roep de draw methode aan om het object te tekenen
+        }
         currentTurn.loop();
     }
 
-    public void unInit(){
-
+    public void unInit() {
+        // Eventuele opruim acties kunnen hier worden gedaan
     }
 
-    private abstract class Turn{
+    private abstract class Turn {
         public abstract void StartTurn();
         public abstract void loop();
         public abstract void NextTurn();
@@ -80,7 +80,7 @@ public class GameScene extends Scene{
                 }
             }
 
-            if (endTurnButton.pressed()){
+            if (endTurnButton.pressed()) {
                 currentTurn.NextTurn();
             }
 
