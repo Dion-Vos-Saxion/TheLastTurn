@@ -25,7 +25,7 @@ public class GameScene extends Scene{
         this.player = player;
         enemy = new Minotaur(600, 300, 300, 300);
 
-        endTurnButton = new EndTurnButton(900, 940, 152, 68, "resources/Sprites/UI elements/End turn Button.png");
+        endTurnButton = new EndTurnButton(840, 940, 152, 68, "resources/Sprites/UI elements/End turn Button.png");
         gameObjects = new GameObject[4];
         gameObjects[0] = new GameImage(512, 512, 1024, 1024, "resources/Sprites/Fight-Background-1.png");
         gameObjects[1] = endTurnButton;
@@ -61,18 +61,22 @@ public class GameScene extends Scene{
         public void StartTurn(){
             player.LoseBlock();
             player.RegainStamina();
+            player.staminaBar.updateCurrent(player.stamina);
         }
 
         public void loop() {
             for (BaseItem item : player.items) {
                 if (MouseHandler.getInstance().clicked(item.x, item.y, item.width, item.height) && player.stamina >= item.ability.staminaCost){
                     player.stamina -= item.ability.staminaCost;
+                    player.staminaBar.updateCurrent(player.stamina);
+                    System.out.println(player.stamina);
+                    if (!item.ability.doesHit())
+                        return;
                     if (item.ability.attack > 0)
                         enemy.TakeDamage(item.ability.attack);
                     if (item.ability.defense > 0)
                         player.GainBlock(item.ability.defense);
                     System.out.println("using " + item.ability.name + " with " + item.ability.attack + " attack and " + item.ability.defense + " defense");
-                    System.out.println(player.stamina);
                 }
             }
 

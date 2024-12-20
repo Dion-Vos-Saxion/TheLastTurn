@@ -4,6 +4,9 @@ import Items.*;
 import nl.saxion.app.SaxionApp;
 import utils.*;
 
+
+import java.awt.*;
+
 public class Player extends GameObject {
 
     private int health;
@@ -15,6 +18,9 @@ public class Player extends GameObject {
     public BaseChestArmor chestArmor;
     public BaseTrousers trousers;
     public BaseWeapon weapon;
+
+    public GaugeBar healthBar;
+    public GaugeBar staminaBar;
 
     public BaseItem[] items;
 //    {50, 625}
@@ -34,6 +40,8 @@ public class Player extends GameObject {
         trousers = new BasicTrousers(UISlots[2][0], UISlots[2][1], UIButtonsSize[0], UIButtonsSize[1]);
         weapon = new BasicWeapon(UISlots[3][0], UISlots[3][1], UIButtonsSize[0], UIButtonsSize[1]);
         items = new BaseItem[]{headpiece, chestArmor, trousers, weapon};
+
+        staminaBar = new GaugeBar(700, 850, 270, 30, Color.BLACK, Color.BLUE, maxStamina);
     }
 
     public void init(){
@@ -63,7 +71,15 @@ public class Player extends GameObject {
 
     public void drawUI(){
         SaxionApp.drawImage(UIBackgroundSprite, 12, 600, 999, 408);
+        SaxionApp.drawImage(UIBackgroundSprite, 690, 620, 300, 368);
+        SaxionApp.setTextDrawingColor(Color.WHITE);
+        SaxionApp.drawText("Current equipment: ", 695, 630, 18);
+        for (int i = 0, nextPos = 0; i < items.length; i++, nextPos += 20) {
+            SaxionApp.drawText(items[i].name, 700, 650 + nextPos, 20);
+        }
         for (BaseItem item : items)
             item.drawAbilities();
+
+        staminaBar.loop();
     }
 }
