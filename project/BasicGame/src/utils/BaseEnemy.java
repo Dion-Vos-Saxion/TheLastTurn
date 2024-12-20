@@ -1,7 +1,5 @@
 package utils;
 
-import nl.saxion.app.SaxionApp;
-
 public abstract class BaseEnemy extends GameObject {
     public int health;
     public String enemyName, sprite;
@@ -16,7 +14,6 @@ public abstract class BaseEnemy extends GameObject {
         return health <= 0;
     }
 
-    public void drawEnemy(){
-        SaxionApp.drawImage(sprite,x - width / 2, y - height / 2, width, height);
-    }
+    // Voeg de abstracte draw() methode toe
+    public abstract void draw(); // Dit moet abstract zijn voor elke subklasse, zoals Minotaur
 }
