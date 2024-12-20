@@ -1,15 +1,35 @@
 package utils;
 
+import GameObjects.GaugeBar;
 import nl.saxion.app.SaxionApp;
 
+import java.awt.*;
+
 public abstract class BaseEnemy extends GameObject {
-    public int health;
+    public int block;
+    public int maxHealth;
+    public int health = maxHealth;
     public String enemyName, sprite;
     public int[] attacks;
     public int[] blocks;
 
-    public void TakeDamage(int damage) {
-        health -= damage;
+    public GaugeBar healthBar = new GaugeBar(700, 420, 270, 15, Color.BLACK, Color.RED, maxHealth);
+
+    public void TakeDamage(int damage){
+        if (block < 0){
+            int restDamage = 0;
+            if (damage >= block){
+                restDamage = damage-block;
+                block = 0;
+            }
+            else
+                block -= damage;
+            if (restDamage > 0)
+                health -= restDamage;
+        }
+        else
+            health -= damage;
+        healthBar.updateCurrent(health);
     }
 
     public boolean IsDead() {
@@ -18,5 +38,6 @@ public abstract class BaseEnemy extends GameObject {
 
     public void drawEnemy(){
         SaxionApp.drawImage(sprite,x - width / 2, y - height / 2, width, height);
+        healthBar.loop();
     }
 }

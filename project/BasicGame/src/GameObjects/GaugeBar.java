@@ -29,6 +29,7 @@ public class GaugeBar extends GameObject {
 
     public void loop() {
         // Draw the background bar
+        SaxionApp.setBorderColor(fillColor);
         SaxionApp.setFill(backgroundColor);
         SaxionApp.drawRectangle(x, y, width, height);
 
