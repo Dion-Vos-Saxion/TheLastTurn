@@ -20,7 +20,7 @@ public abstract class BaseEnemy extends GameObject {
     public Animator animator;
 
     public void TakeDamage(int damage){
-        if (block < 0){
+        if (block > 0){
             int restDamage = 0;
             if (damage >= block){
                 restDamage = damage-block;

@@ -67,7 +67,7 @@ public class Player extends GameObject {
     }
 
     public void TakeDamage(int damage){
-        if (block < 0){
+        if (block > 0){
             int restDamage = 0;
             if (damage >= block){
                 restDamage = damage-block;
@@ -81,6 +81,7 @@ public class Player extends GameObject {
         else
             health -= damage;
         healthBar.updateCurrent(health);
+        System.out.println(health);
     }
 
     public void draw(){
