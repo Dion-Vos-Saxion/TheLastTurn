@@ -18,12 +18,15 @@ public class SceneSwitchButton extends GameObject {
     }
 
     public void loop() {
-        SaxionApp.drawImage(imageFile,x - width / 2, y - height / 2, width, height);
         if (MouseHandler.getInstance().clicked(x, y, width, height)){
             if (sceneIndex == -1)
                 SaxionApp.quit();
             else
                 SceneManager.getInstance().switchScene(sceneIndex);
         }
+    }
+
+    public void draw() {
+        SaxionApp.drawImage(imageFile,x - width / 2, y - height / 2, width, height);
     }
 }

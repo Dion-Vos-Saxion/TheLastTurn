@@ -4,16 +4,20 @@ import GameObjects.GaugeBar;
 import nl.saxion.app.SaxionApp;
 
 import java.awt.*;
+import java.util.Random;
 
 public abstract class BaseEnemy extends GameObject {
     public int block;
     public int maxHealth;
-    public int health = maxHealth;
+    public int health;
     public String enemyName, sprite;
     public int[] attacks;
     public int[] blocks;
+    public int currentActionAmount;
+    public boolean currentIsAttacking;
 
-    public GaugeBar healthBar = new GaugeBar(700, 420, 270, 15, Color.BLACK, Color.RED, maxHealth);
+    public GaugeBar healthBar;
+    public Animator animator;
 
     public void TakeDamage(int damage){
         if (block < 0){
@@ -32,7 +36,46 @@ public abstract class BaseEnemy extends GameObject {
         healthBar.updateCurrent(health);
     }
 
+    public void GainBlock(int block){
+        this.block += block;
+    }
+
+    public void LoseBlock(){
+        block = 0;
+    }
+
     public boolean IsDead() {
         return health <= 0;
+    }
+
+    public int GetActionAmount(){
+        if (currentIsAttacking)
+            return attacks[new Random().nextInt(attacks.length)];
+        else
+            return blocks[new Random().nextInt(blocks.length)];
+    }
+
+    public void NewAction(){
+        currentIsAttacking = new Random().nextBoolean();
+        currentActionAmount = GetActionAmount();
+    }
+
+    public void DrawIntent(){
+        if (currentIsAttacking)
+            SaxionApp.drawImage("resources/Sprites/UI elements/Zwaard.png", x + 24, y + 100, 16, 64);
+        else
+            SaxionApp.drawImage("resources/Sprites/UI elements/Schild.png", x, y + 100, 64, 64);
+
+        SaxionApp.setTextDrawingColor(Color.WHITE);
+        SaxionApp.drawText(Integer.toString(currentActionAmount), x + 8, y + 116, 40);
+    }
+
+    public void DrawName(){
+        SaxionApp.setFill(Color.BLACK);
+        SaxionApp.setBorderColor(Color.BLACK);
+        SaxionApp.drawRectangle(700, 437, 110, 25);
+
+        SaxionApp.setTextDrawingColor(Color.WHITE);
+        SaxionApp.drawText(enemyName, 700, 437, 28);
     }
 }

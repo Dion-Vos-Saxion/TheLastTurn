@@ -21,6 +21,9 @@ public class EndTurnButton extends GameObject {
     }
 
     public void loop() {
+    }
+
+    public void draw() {
         SaxionApp.drawImage(sprite,x - width / 2, y - height / 2, width, height);
     }
 

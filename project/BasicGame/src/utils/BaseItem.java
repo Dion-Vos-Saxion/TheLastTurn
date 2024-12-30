@@ -22,6 +22,10 @@ public abstract class BaseItem {
         SaxionApp.drawText(ability.name, posX + 100, posY + 12, 24);
         SaxionApp.drawText(Integer.toString(ability.hitChance) + "%", posX + 245, posY + 35, 30);
 
+        if (ability.attack >= ability.defense)
+            SaxionApp.drawImage("resources/Sprites/UI elements/Zwaard.png", posX + 40, posY + 14, 16, 64);
+        else
+            SaxionApp.drawImage("resources/Sprites/UI elements/Schild.png", posX + 16, posY + 14, 64, 64);
 
         SaxionApp.setTextDrawingColor(Color.GRAY);
         SaxionApp.setFill(Color.GRAY);

@@ -21,8 +21,10 @@ public class MenuScene extends Scene{
     }
 
     public void loop() {
-        for (GameObject gameObject : gameObjects)
+        for (GameObject gameObject : gameObjects) {
             gameObject.loop();
+            gameObject.draw();
+        }
     }
 
     public void unInit(){

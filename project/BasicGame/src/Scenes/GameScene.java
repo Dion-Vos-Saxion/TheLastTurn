@@ -34,19 +34,19 @@ public class GameScene extends Scene {
     }
 
     public void init() {
-        // Eventuele extra initialisatie kan hier gebeuren
+
     }
 
     public void loop() {
         for (GameObject gameObject : gameObjects) {
-            gameObject.loop(); // Roep de loop methode aan om logica van elk object uit te voeren
-            gameObject.draw(); // Roep de draw methode aan om het object te tekenen
+            gameObject.loop();
+            gameObject.draw();
         }
         currentTurn.loop();
     }
 
     public void unInit() {
-        // Eventuele opruim acties kunnen hier worden gedaan
+
     }
 
     private abstract class Turn {
@@ -84,12 +84,16 @@ public class GameScene extends Scene {
                 currentTurn.NextTurn();
             }
 
+            if (enemy.IsDead()){
+                System.out.println("Switch scene");
+            }
             //if enemy is dead change scene
         }
 
         public void NextTurn() {
             currentTurn = enemyTurn;
             currentTurn.StartTurn();
+            enemy.LoseBlock();
         }
     }
 
@@ -100,7 +104,6 @@ public class GameScene extends Scene {
         }
 
         public void loop() {
-            //damage player
             System.out.println("Enemy Turn");
             NextTurn();
         }
@@ -108,6 +111,7 @@ public class GameScene extends Scene {
         public void NextTurn() {
             currentTurn = playerTurn;
             currentTurn.StartTurn();
+            enemy.NewAction();
         }
     }
 }

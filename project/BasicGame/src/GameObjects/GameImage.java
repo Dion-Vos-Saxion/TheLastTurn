@@ -18,6 +18,9 @@ public class GameImage extends GameObject {
     }
 
     public void loop(){
+    }
+
+    public void draw() {
         SaxionApp.drawImage(image,x - width / 2, y - height / 2, width, height);
     }
 }

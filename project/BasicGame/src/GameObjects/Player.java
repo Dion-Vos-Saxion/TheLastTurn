@@ -50,8 +50,8 @@ public class Player extends GameObject {
     }
 
     public void loop(){
-        drawPlayer();
-        drawUI();
+        staminaBar.loop();
+        healthBar.loop();
     }
 
     public void GainBlock(int block){
@@ -83,11 +83,9 @@ public class Player extends GameObject {
         healthBar.updateCurrent(health);
     }
 
-    public void drawPlayer(){
+    public void draw(){
         //SaxionApp.drawImage(sprite,x - width / 2, y - height / 2, width, height);
-    }
 
-    public void drawUI(){
         SaxionApp.drawImage(UIBackgroundSprite, 12, 600, 999, 408);
         SaxionApp.drawImage(UIBackgroundSprite, 690, 620, 300, 368);
         SaxionApp.setTextDrawingColor(Color.WHITE);
@@ -98,7 +96,15 @@ public class Player extends GameObject {
         for (BaseItem item : items)
             item.drawAbilities();
 
-        staminaBar.loop();
-        healthBar.loop();
+        staminaBar.draw();
+        healthBar.draw();
+
+        if (block > 0){
+            SaxionApp.setBorderColor(Color.GRAY);
+            SaxionApp.setFill(Color.GRAY);
+            SaxionApp.drawCircle(x + 60, y + 125, 20);
+            SaxionApp.setTextDrawingColor(Color.BLACK);
+            SaxionApp.drawText(Integer.toString(block), x + 45, y + 115, 28);
+        }
     }
 }

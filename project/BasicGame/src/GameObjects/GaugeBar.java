@@ -20,23 +20,24 @@ public class GaugeBar extends GameObject {
         this.backgroundColor = backgroundColor;
         this.fillColor = fillColor;
         this.max = max;
-        this.current = max; // Set the current value to max initially
+        this.current = max;
     }
 
     public void init() {
-        // Initialization code if needed
+
     }
 
     public void loop() {
-        // Draw the background bar
+
+    }
+
+    public void draw() {
         SaxionApp.setBorderColor(fillColor);
         SaxionApp.setFill(backgroundColor);
         SaxionApp.drawRectangle(x, y, width, height);
 
-        // Calculate the width of the filled portion based on current/max
         int filledWidth = (int) ((double) current / max * width);
 
-        // Draw the filled portion of the bar
         SaxionApp.setFill(fillColor);
         SaxionApp.drawRectangle(x, y, filledWidth, height);
     }
