@@ -9,7 +9,7 @@ import java.awt.*;
 public class Player extends GameObject {
 
     private int maxHealth = 50;
-    public int health;
+    public int health = maxHealth;
     private int block;
     private int maxStamina = 10;
     public int stamina = maxStamina;

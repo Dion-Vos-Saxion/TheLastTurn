@@ -104,6 +104,12 @@ public class GameScene extends Scene {
         }
 
         public void loop() {
+            if (enemy.currentIsAttacking){
+                player.TakeDamage(enemy.currentActionAmount);
+            }
+            else{
+                enemy.GainBlock(enemy.currentActionAmount);
+            }
             System.out.println("Enemy Turn");
             NextTurn();
         }

@@ -48,5 +48,6 @@ public class Minotaur extends BaseEnemy {
         healthBar.draw();
         DrawName();
         DrawIntent();
+        DrawBlock();
     }
 }

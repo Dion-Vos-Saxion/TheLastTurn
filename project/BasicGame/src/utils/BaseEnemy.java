@@ -78,4 +78,14 @@ public abstract class BaseEnemy extends GameObject {
         SaxionApp.setTextDrawingColor(Color.WHITE);
         SaxionApp.drawText(enemyName, 700, 437, 28);
     }
+
+    public void DrawBlock(){
+        if (block > 0){
+            SaxionApp.setBorderColor(Color.GRAY);
+            SaxionApp.setFill(Color.GRAY);
+            SaxionApp.drawCircle(x + width - 15, y + height - 70, 20);
+            SaxionApp.setTextDrawingColor(Color.BLACK);
+            SaxionApp.drawText(Integer.toString(block), x + width - 30, y + height - 80, 28);
+        }
+    }
 }
