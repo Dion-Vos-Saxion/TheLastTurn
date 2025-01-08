@@ -1,10 +1,7 @@
 package Items;
 
-import nl.saxion.app.SaxionApp;
 import utils.BaseAbility;
 import utils.BaseChestArmor;
-import utils.MouseHandler;
-import utils.SceneManager;
 
 public class BasicChestArmor extends BaseChestArmor {
 
