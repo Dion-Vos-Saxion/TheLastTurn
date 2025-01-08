@@ -26,11 +26,14 @@ public class GameScene extends Scene {
         enemy = new Minotaur(600, 100, 400, 400);
 
         endTurnButton = new EndTurnButton(840, 940, 152, 68, "resources/Sprites/UI elements/End turn Button.png");
-        gameObjects = new GameObject[4];
+        gameObjects = new GameObject[6];
         gameObjects[0] = new GameImage(512, 512, 1024, 1024, "resources/Sprites/Fight-Background-1.png");
         gameObjects[1] = endTurnButton;
         gameObjects[2] = player;
         gameObjects[3] = enemy;
+        gameObjects[4] = new Vuurtje(375,-72);
+        gameObjects[5] = new Vuurtje(840,-2);
+
     }
 
     public void init() {
