@@ -32,11 +32,15 @@ public final class SceneManager {
 
     public void newGame(){
         player = new Player(110, 260, 100, 153);
+        currentScene.unInit();
         currentScene = new GameScene(player, 1);
+        currentScene.init();
     }
 
     public void nextLevel(){
+        currentScene.unInit();
         currentScene = new GameScene(player, 1);
+        currentScene.init();
     }
 }
 
