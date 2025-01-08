@@ -10,7 +10,7 @@ import java.util.Random;
 // Ligt eraan wat jullie leuker/gemakkelijker vinden
 
 // Create a starting tutorial method
-// Create a method that shows wether the enemy is defeated or not
+// Create a method that shows whether the enemy is defeated or not
 // Create a random level generator (!)
 // Create a ending screen method
 
