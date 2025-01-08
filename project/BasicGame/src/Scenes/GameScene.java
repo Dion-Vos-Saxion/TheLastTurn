@@ -13,6 +13,8 @@ public class GameScene extends Scene {
     private Turn playerTurn;
     private Turn enemyTurn;
     private int level;
+    Sound sound = new Sound("resources/Sounds/CombatBackgroundMusic.wav");
+
 
     public GameScene(Player player, int level) {
         playerTurn = new PlayerTurn();
@@ -32,7 +34,7 @@ public class GameScene extends Scene {
     }
 
     public void init() {
-        // Eventuele initiële setup van de scene
+        sound.play();
     }
 
     public void loop() {
@@ -41,16 +43,11 @@ public class GameScene extends Scene {
             gameObject.draw();
         }
         currentTurn.loop();
-
-        // Update de idle animatie voor de speler als hij geen actie onderneemt
-        if (currentTurn == playerTurn) {
-            player.playerAnimator.loop();  // Update de idle animatie
-            player.playerAnimator.draw();  // Teken de idle animatie
-        }
+        SaxionApp.stopSound("resources/Sounds/MenuBackgroundMusic.wav");
     }
 
     public void unInit() {
-        // Eventuele cleanup van de scene
+        sound.stop();
     }
 
     private abstract class Turn {
@@ -71,14 +68,12 @@ public class GameScene extends Scene {
                 if (MouseHandler.getInstance().clicked(item.x, item.y, item.width, item.height) && player.stamina >= item.ability.staminaCost) {
                     player.stamina -= item.ability.staminaCost;
                     player.staminaBar.updateCurrent(player.stamina);
-                    System.out.println(player.stamina);
                     if (!item.ability.doesHit())
                         return;
                     if (item.ability.attack > 0)
                         enemy.TakeDamage(item.ability.attack);
                     if (item.ability.defense > 0)
                         player.GainBlock(item.ability.defense);
-                    System.out.println("using " + item.ability.name + " with " + item.ability.attack + " attack and " + item.ability.defense + " defense");
                 }
             }
 
@@ -87,9 +82,7 @@ public class GameScene extends Scene {
             }
 
             if (enemy.IsDead()) {
-                System.out.println("Switch scene");
             }
-            //if enemy is dead change scene
         }
 
         public void NextTurn() {
@@ -102,7 +95,7 @@ public class GameScene extends Scene {
     private class EnemyTurn extends Turn {
 
         public void StartTurn() {
-            // Logica voor het starten van de vijand beurt
+
         }
 
         public void loop() {
@@ -111,7 +104,6 @@ public class GameScene extends Scene {
             } else {
                 enemy.GainBlock(enemy.currentActionAmount);
             }
-            System.out.println("Enemy Turn");
             NextTurn();
         }
 
