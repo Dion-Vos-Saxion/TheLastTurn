@@ -29,12 +29,10 @@ public class GameScene extends Scene {
         gameObjects[1] = endTurnButton;
         gameObjects[2] = player;
         gameObjects[3] = enemy;
-
-
     }
 
     public void init() {
-
+        // Eventuele initiële setup van de scene
     }
 
     public void loop() {
@@ -43,10 +41,16 @@ public class GameScene extends Scene {
             gameObject.draw();
         }
         currentTurn.loop();
+
+        // Update de idle animatie voor de speler als hij geen actie onderneemt
+        if (currentTurn == playerTurn) {
+            player.playerAnimator.loop();  // Update de idle animatie
+            player.playerAnimator.draw();  // Teken de idle animatie
+        }
     }
 
     public void unInit() {
-
+        // Eventuele cleanup van de scene
     }
 
     private abstract class Turn {
@@ -55,10 +59,8 @@ public class GameScene extends Scene {
         public abstract void NextTurn();
     }
 
-    private class PlayerTurn extends Turn{
-
-
-        public void StartTurn(){
+    private class PlayerTurn extends Turn {
+        public void StartTurn() {
             player.LoseBlock();
             player.RegainStamina();
             player.staminaBar.updateCurrent(player.stamina);
@@ -66,7 +68,7 @@ public class GameScene extends Scene {
 
         public void loop() {
             for (BaseItem item : player.items) {
-                if (MouseHandler.getInstance().clicked(item.x, item.y, item.width, item.height) && player.stamina >= item.ability.staminaCost){
+                if (MouseHandler.getInstance().clicked(item.x, item.y, item.width, item.height) && player.stamina >= item.ability.staminaCost) {
                     player.stamina -= item.ability.staminaCost;
                     player.staminaBar.updateCurrent(player.stamina);
                     System.out.println(player.stamina);
@@ -84,7 +86,7 @@ public class GameScene extends Scene {
                 currentTurn.NextTurn();
             }
 
-            if (enemy.IsDead()){
+            if (enemy.IsDead()) {
                 System.out.println("Switch scene");
             }
             //if enemy is dead change scene
@@ -97,17 +99,16 @@ public class GameScene extends Scene {
         }
     }
 
-    private class EnemyTurn extends Turn{
+    private class EnemyTurn extends Turn {
 
-        public void StartTurn(){
-
+        public void StartTurn() {
+            // Logica voor het starten van de vijand beurt
         }
 
         public void loop() {
-            if (enemy.currentIsAttacking){
+            if (enemy.currentIsAttacking) {
                 player.TakeDamage(enemy.currentActionAmount);
-            }
-            else{
+            } else {
                 enemy.GainBlock(enemy.currentActionAmount);
             }
             System.out.println("Enemy Turn");

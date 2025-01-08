@@ -27,14 +27,22 @@ public class Player extends GameObject {
     public int[][] UISlots = {{150, 665}, {150, 802}, {150, 940}, {490, 665}, {490, 802}, {490, 940}};
     private int[]  UIButtonsSize = {241, 90};
 
-    //String sprite = "resources/Sprites/Enemies/Minotaur.png";
     String UIBackgroundSprite = "resources/Sprites/UI elements/Border UI.png";
+
+    public Animator playerAnimator;
 
     public Player(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+
+        String[] idleFrames = new String[10];
+        for (int i = 0; i < 10; i++) {
+            idleFrames[i] = "resources/Sprites/Player/PlayeIdle" + (i + 1) + ".png";
+        }
+        playerAnimator = new Animator(x, y, width, height, idleFrames, 5);
+
         headpiece = new BasicHeadpiece(UISlots[0][0], UISlots[0][1], UIButtonsSize[0], UIButtonsSize[1]);
         chestArmor = new BasicChestArmor(UISlots[1][0], UISlots[1][1], UIButtonsSize[0], UIButtonsSize[1]);
         trousers = new BasicTrousers(UISlots[2][0], UISlots[2][1], UIButtonsSize[0], UIButtonsSize[1]);
@@ -45,48 +53,44 @@ public class Player extends GameObject {
         staminaBar = new GaugeBar(700, 850, 270, 30, Color.BLACK, Color.BLUE, maxStamina);
     }
 
-    public void init(){
-
+    public void init() {
     }
 
-    public void loop(){
+    public void loop() {
         staminaBar.loop();
         healthBar.loop();
+        playerAnimator.loop();
     }
 
-    public void GainBlock(int block){
+    public void GainBlock(int block) {
         this.block += block;
     }
 
-    public void LoseBlock(){
+    public void LoseBlock() {
         block = 0;
     }
 
-    public void RegainStamina(){
+    public void RegainStamina() {
         stamina = maxStamina;
     }
 
-    public void TakeDamage(int damage){
-        if (block > 0){
+    public void TakeDamage(int damage) {
+        if (block > 0) {
             int restDamage = 0;
-            if (damage >= block){
-                restDamage = damage-block;
+            if (damage >= block) {
+                restDamage = damage - block;
                 block = 0;
-            }
-            else
+            } else
                 block -= damage;
             if (restDamage > 0)
                 health -= restDamage;
-        }
-        else
+        } else
             health -= damage;
         healthBar.updateCurrent(health);
         System.out.println(health);
     }
 
-    public void draw(){
-        //SaxionApp.drawImage(sprite,x - width / 2, y - height / 2, width, height);
-
+    public void draw() {
         SaxionApp.drawImage(UIBackgroundSprite, 12, 600, 999, 408);
         SaxionApp.drawImage(UIBackgroundSprite, 690, 620, 300, 368);
         SaxionApp.setTextDrawingColor(Color.WHITE);
@@ -100,12 +104,14 @@ public class Player extends GameObject {
         staminaBar.draw();
         healthBar.draw();
 
-        if (block > 0){
+        if (block > 0) {
             SaxionApp.setBorderColor(Color.GRAY);
             SaxionApp.setFill(Color.GRAY);
-            SaxionApp.drawCircle(x + 60, y + 125, 20);
+            SaxionApp.drawCircle(x + 265, y + 166, 20);
             SaxionApp.setTextDrawingColor(Color.BLACK);
-            SaxionApp.drawText(Integer.toString(block), x + 45, y + 115, 28);
+            SaxionApp.drawText(Integer.toString(block), x + 258, y + 156, 28);
         }
+
+        playerAnimator.draw();
     }
 }
