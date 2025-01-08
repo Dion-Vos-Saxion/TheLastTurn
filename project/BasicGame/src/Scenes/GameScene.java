@@ -1,6 +1,7 @@
 package Scenes;
 
 import Enemies.Minotaur;
+import Enemies.Skeleton;
 import nl.saxion.app.SaxionApp;
 import utils.*;
 import GameObjects.*;
@@ -23,7 +24,7 @@ public class GameScene extends Scene {
 
         this.level = level;
         this.player = player;
-        enemy = new Minotaur(600, 100, 400, 400);
+        enemy = new Skeleton(600, 100, 400, 400);
 
         endTurnButton = new EndTurnButton(840, 940, 152, 68, "resources/Sprites/UI elements/End turn Button.png");
         gameObjects = new GameObject[4];
