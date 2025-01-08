@@ -2,15 +2,16 @@ package utils;
 
 import GameObjects.Player;
 import Scenes.GameScene;
-import Scenes.MapScene;
 import Scenes.MenuScene;
 import nl.saxion.app.SaxionApp;
 
 public final class SceneManager {
     private static SceneManager instance;
 
-    private  final Scene[] scenes = new Scene[2];
+    private  Scene menuScene;
     private Scene currentScene;
+
+    private Player player;
 
     public static SceneManager getInstance() {
         if (instance == null)
@@ -20,10 +21,7 @@ public final class SceneManager {
     }
 
     public SceneManager(){
-        scenes[0] = new MenuScene();
-        scenes[1] = new GameScene(new Player(110, 260, 100, 153), 1);
-
-        currentScene = scenes[0];
+        currentScene = new MenuScene();
         currentScene.init();
     }
 
@@ -32,10 +30,13 @@ public final class SceneManager {
         currentScene.loop();
     }
 
-    public void switchScene(int index){
-        currentScene.unInit();
-        currentScene = scenes[index];
-        currentScene.init();
+    public void newGame(){
+        player = new Player(110, 260, 100, 153);
+        currentScene = new GameScene(player, 1);
+    }
+
+    public void nextLevel(){
+        currentScene = new GameScene(player, 1);
     }
 }
 

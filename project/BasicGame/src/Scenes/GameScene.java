@@ -5,6 +5,8 @@ import nl.saxion.app.SaxionApp;
 import utils.*;
 import GameObjects.*;
 
+import java.awt.*;
+
 public class GameScene extends Scene {
     private Player player;
     private BaseEnemy enemy;
@@ -42,12 +44,29 @@ public class GameScene extends Scene {
             gameObject.loop();
             gameObject.draw();
         }
+
+        DrawGameOver();
+
         currentTurn.loop();
         SaxionApp.stopSound("resources/Sounds/MenuBackgroundMusic.wav");
     }
 
     public void unInit() {
         sound.stop();
+    }
+
+    public void DrawGameOver() {
+        if (player.health > 0)
+            return;
+        endTurnButton.x = -100;
+        SaxionApp.drawText("Game Over",275, 600, 90);
+        SceneSwitchButton exit = new SceneSwitchButton(512, 900,256, 64, "resources/Sprites/exitgame-W128-H64.png", -1);
+        SceneSwitchButton startGame = new SceneSwitchButton(512, 800, 256, 64, "resources/Sprites/startgame-W128-H64.png", 1);
+
+        exit.loop();
+        exit.draw();
+        startGame.loop();
+        startGame.draw();
     }
 
     private abstract class Turn {

@@ -21,8 +21,10 @@ public class SceneSwitchButton extends GameObject {
         if (MouseHandler.getInstance().clicked(x, y, width, height)){
             if (sceneIndex == -1)
                 SaxionApp.quit();
+            else if(sceneIndex == 1)
+                SceneManager.getInstance().newGame();
             else
-                SceneManager.getInstance().switchScene(sceneIndex);
+                SceneManager.getInstance().nextLevel();
         }
     }
 
