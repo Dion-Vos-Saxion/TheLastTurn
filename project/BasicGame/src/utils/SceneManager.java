@@ -21,7 +21,7 @@ public final class SceneManager {
 
     public SceneManager(){
         scenes[0] = new MenuScene();
-        scenes[1] = new GameScene(new Player(300, 300, 300, 300), 1);
+        scenes[1] = new GameScene(new Player(110, 260, 100, 153), 1);
 
         currentScene = scenes[0];
         currentScene.init();
