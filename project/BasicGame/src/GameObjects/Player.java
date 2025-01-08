@@ -25,7 +25,7 @@ public class Player extends GameObject {
     public BaseItem[] items;
 
     public int[][] UISlots = {{150, 665}, {150, 802}, {150, 940}, {490, 665}, {490, 802}, {490, 940}};
-    private int[]  UIButtonsSize = {241, 90};
+    public int[]  UIButtonsSize = {241, 90};
 
     String UIBackgroundSprite = "resources/Sprites/UI elements/Border UI.png";
 
@@ -93,8 +93,6 @@ public class Player extends GameObject {
     public void draw() {
         if (health <= 0)
             DrawDeathUI();
-        else
-            DrawBottomUI();
 
         playerAnimator.draw();
     }

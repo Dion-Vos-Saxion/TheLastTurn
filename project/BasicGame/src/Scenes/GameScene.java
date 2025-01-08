@@ -1,6 +1,10 @@
 package Scenes;
 
 import Enemies.Minotaur;
+import Items.BasicChestArmor;
+import Items.BasicHeadpiece;
+import Items.BasicTrousers;
+import Items.BasicWeapon;
 import nl.saxion.app.SaxionApp;
 import utils.*;
 import GameObjects.*;
@@ -16,6 +20,13 @@ public class GameScene extends Scene {
     private Turn enemyTurn;
     private int level;
     Sound sound = new Sound("resources/Sounds/CombatBackgroundMusic.wav");
+
+    private BaseItem[] items = new BaseItem[]{
+        new BasicHeadpiece(player.UISlots[0][0], player.UISlots[0][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+            new BasicChestArmor(player.UISlots[1][0], player.UISlots[1][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+            new BasicTrousers(player.UISlots[2][0], player.UISlots[2][1], player.UIButtonsSize[0],player.UIButtonsSize[1]),
+            new BasicWeapon(player.UISlots[3][0], player.UISlots[3][1], player.UIButtonsSize[0], player.UIButtonsSize[1])
+    };
 
 
     public GameScene(Player player, int level) {
@@ -49,6 +60,7 @@ public class GameScene extends Scene {
         }
 
         DrawGameOver();
+        DrawWin();
 
         currentTurn.loop();
         SaxionApp.stopSound("resources/Sounds/MenuBackgroundMusic.wav");
@@ -70,6 +82,16 @@ public class GameScene extends Scene {
         exit.draw();
         startGame.loop();
         startGame.draw();
+    }
+
+    public void DrawWin(){
+        if (enemy.health > 0){
+            player.DrawBottomUI();
+            return;
+        }
+        endTurnButton.x = -100;
+
+
     }
 
     private abstract class Turn {
@@ -101,9 +123,6 @@ public class GameScene extends Scene {
 
             if (endTurnButton.pressed()) {
                 currentTurn.NextTurn();
-            }
-
-            if (enemy.IsDead()) {
             }
         }
 
