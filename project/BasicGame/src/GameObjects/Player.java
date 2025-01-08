@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class Player extends GameObject {
 
-    private int maxHealth = 50;
+    private int maxHealth = 1;
     public int health = maxHealth;
     private int block;
     private int maxStamina = 10;
@@ -91,6 +91,15 @@ public class Player extends GameObject {
     }
 
     public void draw() {
+        if (health <= 0)
+            DrawDeathUI();
+        else
+            DrawBottomUI();
+
+        playerAnimator.draw();
+    }
+
+    public void DrawBottomUI(){
         SaxionApp.drawImage(UIBackgroundSprite, 12, 600, 999, 408);
         SaxionApp.drawImage(UIBackgroundSprite, 690, 620, 300, 368);
         SaxionApp.setTextDrawingColor(Color.WHITE);
@@ -111,7 +120,9 @@ public class Player extends GameObject {
             SaxionApp.setTextDrawingColor(Color.BLACK);
             SaxionApp.drawText(Integer.toString(block), x + 258, y + 156, 28);
         }
+    }
 
-        playerAnimator.draw();
+    public void DrawDeathUI(){
+
     }
 }
