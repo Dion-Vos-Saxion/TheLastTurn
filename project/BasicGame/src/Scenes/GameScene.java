@@ -24,7 +24,8 @@ public class GameScene extends Scene {
 
         this.level = level;
         this.player = player;
-        enemy = new Minotaur(700, 190, 300, 300);
+        enemy = new Minotaur(600, 100, 400, 400);
+//        enemy = new Skeleton(750, 260, 150, 150);
 
         endTurnButton = new EndTurnButton(840, 940, 152, 68, "resources/Sprites/UI elements/End turn Button.png");
         gameObjects = new GameObject[4];
