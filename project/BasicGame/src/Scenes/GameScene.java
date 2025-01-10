@@ -10,6 +10,7 @@ import utils.*;
 import GameObjects.*;
 
 import java.awt.*;
+import java.util.Random;
 
 public class GameScene extends Scene {
     private Player player;
@@ -21,12 +22,12 @@ public class GameScene extends Scene {
     private int level;
     Sound sound = new Sound("resources/Sounds/CombatBackgroundMusic.wav");
 
-    private BaseItem[] items = new BaseItem[]{
-        new BasicHeadpiece(player.UISlots[0][0], player.UISlots[0][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
-            new BasicChestArmor(player.UISlots[1][0], player.UISlots[1][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
-            new BasicTrousers(player.UISlots[2][0], player.UISlots[2][1], player.UIButtonsSize[0],player.UIButtonsSize[1]),
-            new BasicWeapon(player.UISlots[3][0], player.UISlots[3][1], player.UIButtonsSize[0], player.UIButtonsSize[1])
-    };
+    private BaseItem[] items;
+    private BaseItem optionOne;
+    private BaseItem optionTwo;
+
+    private ItemChoice choiceOne;
+    private ItemChoice choiceTwo;
 
 
     public GameScene(Player player, int level) {
@@ -37,6 +38,25 @@ public class GameScene extends Scene {
         this.level = level;
         this.player = player;
         enemy = new Minotaur(600, 100, 400, 400);
+
+        items = new BaseItem[]{
+                new BasicHeadpiece(player.UISlots[0][0], player.UISlots[0][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+                new BasicChestArmor(player.UISlots[1][0], player.UISlots[1][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+                new BasicTrousers(player.UISlots[2][0], player.UISlots[2][1], player.UIButtonsSize[0],player.UIButtonsSize[1]),
+                new BasicWeapon(player.UISlots[3][0], player.UISlots[3][1], player.UIButtonsSize[0], player.UIButtonsSize[1])
+        };
+
+        Random random = new Random();
+        optionOne = items[random.nextInt(items.length)];
+        do{
+            optionTwo = items[random.nextInt(items.length)];
+        }
+        while (optionOne == optionTwo);
+
+        choiceOne = new ItemChoice(200, 800, optionOne);
+        choiceTwo = new ItemChoice(700, 800, optionTwo);
+        choiceOne.setOtherItem(choiceTwo);
+        choiceTwo.setOtherItem(choiceOne);
 
         endTurnButton = new EndTurnButton(840, 940, 152, 68, "resources/Sprites/UI elements/End turn Button.png");
         gameObjects = new GameObject[6];
@@ -63,7 +83,6 @@ public class GameScene extends Scene {
         DrawWin();
 
         currentTurn.loop();
-        SaxionApp.stopSound("resources/Sounds/MenuBackgroundMusic.wav");
     }
 
     public void unInit() {
@@ -90,9 +109,15 @@ public class GameScene extends Scene {
             return;
         }
         endTurnButton.x = -100;
+        SaxionApp.drawText("Victory!",275, 600, 90);
+        SaxionApp.drawText("choose your prize",250, 700, 40);
 
-
+        choiceOne.loop();
+        choiceTwo.loop();
+        choiceOne.draw();
+        choiceTwo.draw();
     }
+
 
     private abstract class Turn {
         public abstract void StartTurn();

@@ -16,7 +16,7 @@ public class Minotaur extends BaseEnemy {
         this.width = width;
         this.height = height;
 
-        maxHealth = 30;
+        maxHealth = 3;
         health = maxHealth;
         enemyName = "Minotaur";
         attacks = new int[]{11, 5, 3};

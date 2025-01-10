@@ -11,24 +11,20 @@ public class BasicGame implements GameLoop {
         SaxionApp.startGameLoop(new BasicGame(), 1024, 1024, 40);
     }
 
-    @Override
     public void init() {
 
     }
 
-    @Override
     public void loop() {
         SaxionApp.clear();
         SceneManager.getInstance().loop();
         MouseHandler.getInstance().afterupdate();
     }
 
-    @Override
     public void keyboardEvent(KeyboardEvent keyboardEvent) {
 
     }
 
-    @Override
     public void mouseEvent(MouseEvent mouseEvent) {
         MouseHandler.getInstance().update(mouseEvent);
     }
