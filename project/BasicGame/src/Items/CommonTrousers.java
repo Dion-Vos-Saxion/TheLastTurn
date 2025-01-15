@@ -2,7 +2,6 @@ package Items;
 
 import utils.BaseAbility;
 import utils.BaseItem;
-import utils.BaseTrousers;
 
 public class CommonTrousers extends BaseItem {
 

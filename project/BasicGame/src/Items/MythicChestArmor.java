@@ -1,7 +1,6 @@
 package Items;
 
 import utils.BaseAbility;
-import utils.BaseChestArmor;
 import utils.BaseItem;
 
 public class MythicChestArmor extends BaseItem {

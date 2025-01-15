@@ -1,7 +1,6 @@
 package Items;
 
 import utils.BaseAbility;
-import utils.BaseTrousers;
 import utils.BaseItem;
 
 public class MythicTrousers extends BaseItem {

@@ -1,7 +1,6 @@
 package Items;
 
 import utils.BaseAbility;
-import utils.BaseHeadpiece;
 import utils.BaseItem;
 
 public class LegendaryHeadpiece extends BaseItem {

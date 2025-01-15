@@ -2,7 +2,6 @@ package Items;
 
 import utils.BaseAbility;
 import utils.BaseItem;
-import utils.BaseWeapon;
 
 public class EpicWeapon extends BaseItem {
 

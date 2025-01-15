@@ -1,7 +1,6 @@
 package Items;
 
 import utils.BaseAbility;
-import utils.BaseWeapon;
 import utils.BaseItem;
 
 public class LegendaryWeapon extends BaseItem {
