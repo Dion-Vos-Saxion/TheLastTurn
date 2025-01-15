@@ -62,7 +62,7 @@ public abstract class BaseEnemy extends GameObject {
 
     public void DrawIntent(){
         if (currentIsAttacking)
-            SaxionApp.drawImage("resources/Sprites/UI elements/Zwaard.png", x + 24, y + 100, 16, 64);
+            SaxionApp.drawImage("resources/Sprites/UI elements/Weapons/BaseSword.png", x + 24, y + 100, 16, 64);
         else
             SaxionApp.drawImage("resources/Sprites/UI elements/Schild.png", x, y + 100, 64, 64);
 

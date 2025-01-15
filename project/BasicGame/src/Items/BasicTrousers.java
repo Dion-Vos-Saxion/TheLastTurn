@@ -12,7 +12,7 @@ public class BasicTrousers extends BaseItem {
         this.height = height;
         type = "Trouser";
         name = "Basic Trousers";
-        ability = new BaseAbility("Kick", 2, 3, 2, 70);
+        ability = new BaseAbility("Kick", 2, 3, 2, 70,"resources/Sprites/UI elements/Trousers/BaseTrousers.png");
     }
 
     @Override

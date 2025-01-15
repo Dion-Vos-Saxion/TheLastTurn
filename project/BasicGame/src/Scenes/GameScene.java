@@ -1,10 +1,12 @@
 package Scenes;
 
+import Enemies.Bat;
 import Enemies.Minotaur;
 import Items.BasicChestArmor;
 import Items.BasicHeadpiece;
 import Items.BasicTrousers;
 import Items.BasicWeapon;
+import Enemies.Skeleton;
 import nl.saxion.app.SaxionApp;
 import utils.*;
 import GameObjects.*;
@@ -44,7 +46,9 @@ public class GameScene extends Scene {
 
         this.level = level;
         this.player = player;
-        enemy = new Minotaur(600, 100, 400, 400);
+//        enemy = new Minotaur(600, 100, 400, 400);
+//        enemy = new Skeleton(750, 260, 150, 150);
+        enemy = new Bat(750, 260, 150, 150);
 
         items = new BaseItem[]{
                 new BasicHeadpiece(player.UISlots[0][0], player.UISlots[0][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),

@@ -24,7 +24,7 @@ public abstract class BaseItem {
         SaxionApp.drawText(Integer.toString(ability.hitChance) + "%", posX + 245, posY + 35, 30);
 
         if (ability.attack >= ability.defense)
-            SaxionApp.drawImage("resources/Sprites/UI elements/Zwaard.png", posX + 40, posY + 14, 16, 64);
+            SaxionApp.drawImage("resources/Sprites/UI elements/BaseSword.png", posX + 40, posY + 14, 16, 64);
         else
             SaxionApp.drawImage("resources/Sprites/UI elements/Schild.png", posX + 16, posY + 14, 64, 64);
 

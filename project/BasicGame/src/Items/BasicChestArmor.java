@@ -1,6 +1,5 @@
 package Items;
 
-import nl.saxion.app.SaxionApp;
 import utils.BaseAbility;
 import utils.BaseItem;
 import utils.MouseHandler;
@@ -15,7 +14,7 @@ public class BasicChestArmor extends BaseItem {
         this.height = height;
         type = "ChestArmor";
         name = "Basic Chest Armor";
-        ability = new BaseAbility("Block", 0, 5, 2, 80);
+        ability = new BaseAbility("Block", 0, 5, 2, 80, "resources/Sprites/UI elements/ChestArmors/BaseArmorPiece.png");
     }
 
     public void loop() {
