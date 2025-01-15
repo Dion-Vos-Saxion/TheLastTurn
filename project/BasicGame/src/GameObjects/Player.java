@@ -43,6 +43,15 @@ public class Player extends GameObject {
         }
         playerAnimator = new Animator(x, y, width, height, idleFrames, 5);
 
+        // Set the hurt animation frames (4 frames for the hurt animation)
+        String[] hurtFrames = {
+                "resources/Sprites/Player/Hurt Animation/PlayerHurt1.png",
+                "resources/Sprites/Player/Hurt Animation/PlayerHurt2.png",
+                "resources/Sprites/Player/Hurt Animation/PlayerHurt3.png",
+                "resources/Sprites/Player/Hurt Animation/PlayerHurt4.png"
+        };
+        playerAnimator.setHurtAnimation(hurtFrames, 10);
+
         headpiece = new BasicHeadpiece(UISlots[0][0], UISlots[0][1], UIButtonsSize[0], UIButtonsSize[1]);
         chestArmor = new BasicChestArmor(UISlots[1][0], UISlots[1][1], UIButtonsSize[0], UIButtonsSize[1]);
         trousers = new BasicTrousers(UISlots[2][0], UISlots[2][1], UIButtonsSize[0], UIButtonsSize[1]);
@@ -86,8 +95,21 @@ public class Player extends GameObject {
                 health -= restDamage;
         } else
             health -= damage;
+
         healthBar.updateCurrent(health);
         System.out.println(health);
+
+        playerAnimator.triggerHurt();
+    }
+
+    public void triggerAttack() {
+        // Dit triggert de aanvalsanime van de speler
+        String[] attackFrames = new String[7];
+        for (int i = 0; i < 7; i++) {
+            attackFrames[i] = "resources/Sprites/Player/AttackAnimation/PlayerAttack" + (i + 1) + ".png";
+        }
+
+        playerAnimator.setAttackAnimation(attackFrames, 5); // Stel de aanvalsanime in
     }
 
     public void draw() {
