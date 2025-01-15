@@ -1,9 +1,9 @@
 package Items;
 
 import utils.BaseAbility;
-import utils.BaseWeapon;
+import utils.BaseItem;
 
-public class MythicWeapon extends BaseWeapon {
+public class MythicWeapon extends BaseItem {
 
     public MythicWeapon(int x, int y, int width, int height) {
         this.x = x;
@@ -11,7 +11,7 @@ public class MythicWeapon extends BaseWeapon {
         this.width = width;
         this.height = height;
         name = "Mythic Weapon";
-        ability = new BaseAbility("Slash", 15, 0, 7, 95);
+        ability = new BaseAbility("Slash", 15, 0, 7, 95, "resources/Sprites/UI elements/Weapons/MythicSword.png");
     }
 
     @Override

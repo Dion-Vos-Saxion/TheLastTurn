@@ -1,9 +1,9 @@
 package Items;
 
 import utils.BaseAbility;
-import utils.BaseHeadpiece;
+import utils.BaseItem;
 
-public class UncommonHeadpiece extends BaseHeadpiece {
+public class UncommonHeadpiece extends BaseItem {
 
     public UncommonHeadpiece(int x, int y, int width, int height) {
         this.x = x;
@@ -11,7 +11,7 @@ public class UncommonHeadpiece extends BaseHeadpiece {
         this.width = width;
         this.height = height;
         name = "Uncommon Head Piece";
-        ability = new BaseAbility("Brace", 0, 5, 1, 75);
+        ability = new BaseAbility("Brace", 0, 5, 1, 75, "resources/Sprites/UI elements/Headpieces/UncommonHeadPiece.png");
     }
 
     @Override

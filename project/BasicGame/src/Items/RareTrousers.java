@@ -1,9 +1,9 @@
 package Items;
 
 import utils.BaseAbility;
-import utils.BaseTrousers;
+import utils.BaseItem;
 
-public class RareTrousers extends BaseTrousers {
+public class RareTrousers extends BaseItem {
 
     public RareTrousers(int x, int y, int width, int height) {
         this.x = x;
@@ -11,7 +11,7 @@ public class RareTrousers extends BaseTrousers {
         this.width = width;
         this.height = height;
         name = "Rare Trousers";
-        ability = new BaseAbility("Kick", 6, 1, 2, 65);
+        ability = new BaseAbility("Kick", 6, 1, 2, 65, "resources/Sprites/UI elements/Trousers/RareTrousers.png");
     }
 
     @Override

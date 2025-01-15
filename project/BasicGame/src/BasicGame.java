@@ -33,9 +33,3 @@ public class BasicGame implements GameLoop {
         MouseHandler.getInstance().update(mouseEvent);
     }
 }
-
-
-
-
-
-

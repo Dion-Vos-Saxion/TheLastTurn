@@ -39,7 +39,7 @@ public class Player extends GameObject {
 
         String[] idleFrames = new String[10];
         for (int i = 0; i < 10; i++) {
-            idleFrames[i] = "resources/Sprites/Player/PlayeIdle" + (i + 1) + ".png";
+            idleFrames[i] = "resources/Sprites/Player/Idle/PlayeIdle" + (i + 1) + ".png";
         }
         playerAnimator = new Animator(x, y, width, height, idleFrames, 5);
 

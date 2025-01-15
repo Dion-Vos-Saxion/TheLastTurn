@@ -2,8 +2,9 @@ package Items;
 
 import utils.BaseAbility;
 import utils.BaseChestArmor;
+import utils.BaseItem;
 
-public class BasicChestArmor extends BaseChestArmor {
+public class BasicChestArmor extends BaseItem {
 
     public BasicChestArmor(int x, int y, int width, int height) {
         this.x = x;
@@ -11,7 +12,7 @@ public class BasicChestArmor extends BaseChestArmor {
         this.width = width;
         this.height = height;
         name = "Basic Chest Armor";
-        ability = new BaseAbility("Block", 0, 5, 2, 80);
+        ability = new BaseAbility("Block", 0, 5, 2, 80, "resources/Sprites/UI elements/ChestArmors/BaseArmorPiece.png");
     }
 
     public void loop() {

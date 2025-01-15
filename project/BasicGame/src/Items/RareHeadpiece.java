@@ -1,9 +1,9 @@
 package Items;
 
 import utils.BaseAbility;
-import utils.BaseHeadpiece;
+import utils.BaseItem;
 
-public class RareHeadpiece extends BaseHeadpiece {
+public class RareHeadpiece extends BaseItem {
 
     public RareHeadpiece(int x, int y, int width, int height) {
         this.x = x;
@@ -11,7 +11,7 @@ public class RareHeadpiece extends BaseHeadpiece {
         this.width = width;
         this.height = height;
         name = "Rare Head Piece";
-        ability = new BaseAbility("Brace", 0, 6, 1, 75);
+        ability = new BaseAbility("Brace", 0, 6, 1, 75, "resources/Sprites/UI elements/Headpieces/RareHeadPiece.png");
     }
 
     @Override

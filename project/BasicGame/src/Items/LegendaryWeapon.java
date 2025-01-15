@@ -2,8 +2,9 @@ package Items;
 
 import utils.BaseAbility;
 import utils.BaseWeapon;
+import utils.BaseItem;
 
-public class LegendaryWeapon extends BaseWeapon {
+public class LegendaryWeapon extends BaseItem {
 
     public LegendaryWeapon(int x, int y, int width, int height) {
         this.x = x;
@@ -11,7 +12,7 @@ public class LegendaryWeapon extends BaseWeapon {
         this.width = width;
         this.height = height;
         name = "Legendary Weapon";
-        ability = new BaseAbility("Stab", 12, 0, 5, 85);
+        ability = new BaseAbility("Stab", 12, 0, 5, 85, "resources/Sprites/UI elements/Weapons/LegendaryWeapon.png");
     }
 
     @Override

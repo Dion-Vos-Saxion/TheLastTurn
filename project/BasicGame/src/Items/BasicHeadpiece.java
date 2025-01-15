@@ -2,8 +2,9 @@ package Items;
 
 import utils.BaseAbility;
 import utils.BaseHeadpiece;
+import utils.BaseItem;
 
-public class BasicHeadpiece extends BaseHeadpiece {
+public class BasicHeadpiece extends BaseItem {
 
     public BasicHeadpiece(int x, int y, int width, int height) {
         this.x = x;
@@ -11,7 +12,7 @@ public class BasicHeadpiece extends BaseHeadpiece {
         this.width = width;
         this.height = height;
         name = "Basic Head Piece";
-        ability = new BaseAbility("Brace", 0, 3, 2, 100);
+        ability = new BaseAbility("Brace", 0, 3, 2, 100,"resources/Sprites/UI elements/Headpieces/BaseChestPiece.png");
     }
 
     @Override

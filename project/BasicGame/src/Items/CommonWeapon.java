@@ -2,8 +2,9 @@ package Items;
 
 import utils.BaseAbility;
 import utils.BaseWeapon;
+import utils.BaseItem;
 
-public class CommonWeapon extends BaseWeapon {
+public class CommonWeapon extends BaseItem {
 
     public CommonWeapon(int x, int y, int width, int height) {
         this.x = x;
@@ -11,7 +12,7 @@ public class CommonWeapon extends BaseWeapon {
         this.width = width;
         this.height = height;
         name = "Basic Weapon";
-        ability = new BaseAbility("Slash", 8, 0, 3, 55);
+        ability = new BaseAbility("Slash", 8, 0, 3, 55,"resources/Sprites/UI elements/Weapons/CommonSword.png");
     }
 
     @Override
