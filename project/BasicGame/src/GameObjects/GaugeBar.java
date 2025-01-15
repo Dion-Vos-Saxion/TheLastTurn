@@ -42,7 +42,6 @@ public class GaugeBar extends GameObject {
         SaxionApp.drawRectangle(x, y, filledWidth, height);
     }
 
-    // Method to update the current value (optional helper)
     public void updateCurrent(int newValue) {
         if (newValue < 0) {
             this.current = 0;

@@ -16,7 +16,7 @@ public class Bat extends BaseEnemy {
         this.width = width;
         this.height = height;
 
-        maxHealth = 15;
+        maxHealth = 1;
         health = maxHealth;
         enemyName = "Bat";
         attacks = new int[]{15, 5, 4};

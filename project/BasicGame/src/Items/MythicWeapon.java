@@ -10,6 +10,7 @@ public class MythicWeapon extends BaseItem {
         this.y = y;
         this.width = width;
         this.height = height;
+        type = "Weapon";
         name = "Mythic Weapon";
         ability = new BaseAbility("Slash", 15, 0, 7, 95, "resources/Sprites/UI elements/Weapons/MythicSword.png");
     }

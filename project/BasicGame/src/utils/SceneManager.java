@@ -8,7 +8,7 @@ import nl.saxion.app.SaxionApp;
 public final class SceneManager {
     private static SceneManager instance;
 
-    private  Scene menuScene;
+    private Scene menuScene;
     private Scene currentScene;
 
     public Player player;

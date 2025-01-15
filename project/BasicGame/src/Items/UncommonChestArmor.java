@@ -10,6 +10,7 @@ public class UncommonChestArmor extends BaseItem {
         this.y = y;
         this.width = width;
         this.height = height;
+        type = "ChestArmor";
         name = "Uncommon Chest Armor";
         ability = new BaseAbility("Block", 0, 9, 3, 75, "resources/Sprites/UI elements/ChestArmors/UncommonArmorPiece.png");
     }

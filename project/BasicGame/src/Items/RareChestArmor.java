@@ -10,6 +10,7 @@ public class RareChestArmor extends BaseItem {
         this.y = y;
         this.width = width;
         this.height = height;
+        type = "ChestArmor";
         name = "Rare Chest Armor";
         ability = new BaseAbility("Block", 0, 9, 2, 80, "resources/Sprites/UI elements/ChestArmors/RareChestArmor.png");
     }

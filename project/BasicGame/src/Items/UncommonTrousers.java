@@ -10,6 +10,7 @@ public class UncommonTrousers extends BaseItem {
         this.y = y;
         this.width = width;
         this.height = height;
+        type = "Trouser";
         name = "Uncommon Trousers";
         ability = new BaseAbility("Kick", 5, 2, 2, 65, "resources/Sprites/UI elements/Trousers/UncommonTrousers.png");
     }

@@ -10,6 +10,7 @@ public class MythicHeadpiece extends BaseItem {
         this.y = y;
         this.width = width;
         this.height = height;
+        type = "Headpiece";
         name = "Mythic Head Piece";
         ability = new BaseAbility("Brace", 0, 12, 5, 95,"resources/Sprites/UI elements/Headpieces/MythicHeadPiece.png");
     }

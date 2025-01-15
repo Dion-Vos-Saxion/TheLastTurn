@@ -10,6 +10,7 @@ public class EpicHeadpiece extends BaseItem {
         this.y = y;
         this.width = width;
         this.height = height;
+        type = "Headpiece";
         name = "Epic Head Piece";
         ability = new BaseAbility("Brace", 0, 7, 2, 80,"resources/Sprites/UI elements/Headpieces/EpicHeadPiece.png");
     }

@@ -8,10 +8,10 @@ import java.awt.*;
 
 public class Player extends GameObject {
 
-    private int maxHealth = 1;
+    public int maxHealth = 1;
     public int health = maxHealth;
     private int block;
-    private int maxStamina = 10;
+    public int maxStamina = 10;
     public int stamina = maxStamina;
 
     public BaseItem headpiece;
@@ -103,13 +103,12 @@ public class Player extends GameObject {
     }
 
     public void triggerAttack() {
-        // Dit triggert de aanvalsanime van de speler
         String[] attackFrames = new String[7];
         for (int i = 0; i < 7; i++) {
             attackFrames[i] = "resources/Sprites/Player/AttackAnimation/PlayerAttack" + (i + 1) + ".png";
         }
 
-        playerAnimator.setAttackAnimation(attackFrames, 5); // Stel de aanvalsanime in
+        playerAnimator.setAttackAnimation(attackFrames, 5);
     }
 
     public void draw() {
@@ -144,11 +143,8 @@ public class Player extends GameObject {
     public void ChangeGear(BaseItem item){
         if (item == null)
             return;
-        for (BaseItem i : items){
-            if (i.type.equals(item.type)){
-                i = item;
-                return;
-            }
-        }
+        for (int i = 0; i < items.length; i++)
+            if (items[i].type.equalsIgnoreCase(item.type))
+                items[i] = item;
     }
 }

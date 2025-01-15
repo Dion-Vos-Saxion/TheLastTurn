@@ -2,10 +2,7 @@ package Scenes;
 
 import Enemies.Bat;
 import Enemies.Minotaur;
-import Items.BasicChestArmor;
-import Items.BasicHeadpiece;
-import Items.BasicTrousers;
-import Items.BasicWeapon;
+import Items.*;
 import Enemies.Skeleton;
 import nl.saxion.app.SaxionApp;
 import utils.*;
@@ -22,13 +19,22 @@ public class GameScene extends Scene {
     private Turn playerTurn;
     private Turn enemyTurn;
     private int level;
+
     Sound sound = new Sound("resources/Sounds/CombatBackgroundMusic.wav");
     Sound attackSound = new Sound("resources/Sounds/attackSound.wav");
     Sound blockSound = new Sound("resources/Sounds/blockSound.wav");
 
     private BaseItem[] items;
+
+    private BaseEnemy[] enemies = new BaseEnemy[]{
+            new Minotaur(600, 100, 400, 400),
+            new Skeleton(750, 260, 150, 150),
+            new Bat(750, 260, 150, 150)
+    };
+
     private BaseItem optionOne;
     private BaseItem optionTwo;
+
     GameImage[] backgrounds = new GameImage[]{
             new GameImage(512, 512, 1024, 1024, "resources/Sprites/UI elements/Fight-Backgrounds/Fight-Background-1.png"),
             new GameImage(512, 512, 1024, 1024, "resources/Sprites/UI elements/Fight-Backgrounds/Fight-Background-2.png"),
@@ -44,20 +50,49 @@ public class GameScene extends Scene {
         enemyTurn = new EnemyTurn();
         currentTurn = playerTurn;
 
+        Random random = new Random();
+
         this.level = level;
         this.player = player;
-//        enemy = new Minotaur(600, 100, 400, 400);
-//        enemy = new Skeleton(750, 260, 150, 150);
-        enemy = new Bat(750, 260, 150, 150);
+        enemy = enemies[random.nextInt(enemies.length)];
 
         items = new BaseItem[]{
                 new BasicHeadpiece(player.UISlots[0][0], player.UISlots[0][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
                 new BasicChestArmor(player.UISlots[1][0], player.UISlots[1][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
                 new BasicTrousers(player.UISlots[2][0], player.UISlots[2][1], player.UIButtonsSize[0],player.UIButtonsSize[1]),
-                new BasicWeapon(player.UISlots[3][0], player.UISlots[3][1], player.UIButtonsSize[0], player.UIButtonsSize[1])
+                new BasicWeapon(player.UISlots[3][0], player.UISlots[3][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+
+                new CommonHeadpiece(player.UISlots[0][0], player.UISlots[0][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+                new CommonChestArmor(player.UISlots[1][0], player.UISlots[1][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+                new CommonTrousers(player.UISlots[2][0], player.UISlots[2][1], player.UIButtonsSize[0],player.UIButtonsSize[1]),
+                new CommonWeapon(player.UISlots[3][0], player.UISlots[3][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+
+                new UncommonHeadpiece(player.UISlots[0][0], player.UISlots[0][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+                new UncommonChestArmor(player.UISlots[1][0], player.UISlots[1][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+                new UncommonTrousers(player.UISlots[2][0], player.UISlots[2][1], player.UIButtonsSize[0],player.UIButtonsSize[1]),
+                new UncommonWeapon(player.UISlots[3][0], player.UISlots[3][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+
+                new RareHeadpiece(player.UISlots[0][0], player.UISlots[0][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+                new RareChestArmor(player.UISlots[1][0], player.UISlots[1][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+                new RareTrousers(player.UISlots[2][0], player.UISlots[2][1], player.UIButtonsSize[0],player.UIButtonsSize[1]),
+                new RareWeapon(player.UISlots[3][0], player.UISlots[3][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+
+                new EpicHeadpiece(player.UISlots[0][0], player.UISlots[0][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+                new EpicChestArmor(player.UISlots[1][0], player.UISlots[1][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+                new EpicTrousers(player.UISlots[2][0], player.UISlots[2][1], player.UIButtonsSize[0],player.UIButtonsSize[1]),
+                new EpicWeapon(player.UISlots[3][0], player.UISlots[3][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+
+                new LegendaryHeadpiece(player.UISlots[0][0], player.UISlots[0][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+                new LegendaryChestArmor(player.UISlots[1][0], player.UISlots[1][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+                new LegendaryTrousers(player.UISlots[2][0], player.UISlots[2][1], player.UIButtonsSize[0],player.UIButtonsSize[1]),
+                new LegendaryWeapon(player.UISlots[3][0], player.UISlots[3][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+
+                new MythicHeadpiece(player.UISlots[0][0], player.UISlots[0][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+                new MythicChestArmor(player.UISlots[1][0], player.UISlots[1][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+                new MythicTrousers(player.UISlots[2][0], player.UISlots[2][1], player.UIButtonsSize[0],player.UIButtonsSize[1]),
+                new MythicWeapon(player.UISlots[3][0], player.UISlots[3][1], player.UIButtonsSize[0], player.UIButtonsSize[1])
         };
 
-        Random random = new Random();
         optionOne = items[random.nextInt(items.length)];
         do{
             optionTwo = items[random.nextInt(items.length)];
@@ -81,6 +116,10 @@ public class GameScene extends Scene {
     }
 
     public void init() {
+        player.stamina = player.maxStamina;
+        player.health = player.maxHealth;
+        player.staminaBar.updateCurrent(player.stamina);
+        player.healthBar.updateCurrent(player.health);
         sound.play();
     }
 
@@ -119,8 +158,8 @@ public class GameScene extends Scene {
 
     public void DrawWin(){
         endTurnButton.x = -100;
-        SaxionApp.drawText("Victory!",275, 600, 90);
-        SaxionApp.drawText("choose your prize",250, 700, 40);
+        SaxionApp.drawText("Victory!",375, 500, 90);
+        SaxionApp.drawText("choose your prize",375, 600, 40);
 
         choiceOne.loop();
         choiceTwo.loop();

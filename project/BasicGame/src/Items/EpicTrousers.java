@@ -10,6 +10,7 @@ public class EpicTrousers extends BaseItem {
         this.y = y;
         this.width = width;
         this.height = height;
+        type = "Trouser";
         name = "Epic Trousers";
         ability = new BaseAbility("Kick", 6, 2, 3, 70, "resources/Sprites/UI elements/Trousers/EpicTrousers.png");
     }

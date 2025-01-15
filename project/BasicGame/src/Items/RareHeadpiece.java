@@ -10,6 +10,7 @@ public class RareHeadpiece extends BaseItem {
         this.y = y;
         this.width = width;
         this.height = height;
+        type = "Headpiece";
         name = "Rare Head Piece";
         ability = new BaseAbility("Brace", 0, 6, 1, 75, "resources/Sprites/UI elements/Headpieces/RareHeadPiece.png");
     }

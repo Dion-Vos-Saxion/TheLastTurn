@@ -28,21 +28,31 @@ public abstract class BaseItem {
         else
             SaxionApp.drawImage("resources/Sprites/UI elements/Schild.png", posX + 16, posY + 14, 64, 64);
 
-        SaxionApp.setTextDrawingColor(Color.GRAY);
-        SaxionApp.setFill(Color.GRAY);
-        for (int i = 0, nextPos = 0; i < ability.defense; i++, nextPos += 15){
-            SaxionApp.drawCircle(posX + 105 + nextPos, posY + 60, 4);
+        if (ability.defense > 7 || ability.attack > 7 || ability.staminaCost > 7){
+            SaxionApp.setTextDrawingColor(Color.GRAY);
+            SaxionApp.drawText(Integer.toString(ability.defense), posX+ 95, posY+ 60, 24);
+            SaxionApp.setTextDrawingColor(Color.RED);
+            SaxionApp.drawText(Integer.toString(ability.attack), posX + 135, posY+ 60, 24);
+            SaxionApp.setTextDrawingColor(Color.BLUE);
+            SaxionApp.drawText(Integer.toString(ability.staminaCost), posX + 165, posY + 60, 24);
         }
+        else {
+            SaxionApp.setTextDrawingColor(Color.GRAY);
+            SaxionApp.setFill(Color.GRAY);
+            for (int i = 0, nextPos = 0; i < ability.defense; i++, nextPos += 15) {
+                SaxionApp.drawCircle(posX + 105 + nextPos, posY + 60, 4);
+            }
 
-        SaxionApp.setTextDrawingColor(Color.RED);
-        SaxionApp.setFill(Color.RED);
-        for (int i = 0, nextPos = 0; i < ability.attack; i++, nextPos += 15){
-            SaxionApp.drawCircle(posX + 105 + nextPos, posY + 72, 4);
-        }
-        SaxionApp.setFill(Color.BLUE);
-        SaxionApp.setTextDrawingColor(Color.BLUE);
-        for (int i = 0, nextPos = 0; i < ability.staminaCost; i++, nextPos += 15){
-            SaxionApp.drawCircle(posX + 105 + nextPos, posY + 84, 4);
+            SaxionApp.setTextDrawingColor(Color.RED);
+            SaxionApp.setFill(Color.RED);
+            for (int i = 0, nextPos = 0; i < ability.attack; i++, nextPos += 15) {
+                SaxionApp.drawCircle(posX + 105 + nextPos, posY + 72, 4);
+            }
+            SaxionApp.setFill(Color.BLUE);
+            SaxionApp.setTextDrawingColor(Color.BLUE);
+            for (int i = 0, nextPos = 0; i < ability.staminaCost; i++, nextPos += 15) {
+                SaxionApp.drawCircle(posX + 105 + nextPos, posY + 84, 4);
+            }
         }
     }
     public abstract void loop();

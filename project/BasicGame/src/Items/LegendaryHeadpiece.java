@@ -10,6 +10,7 @@ public class LegendaryHeadpiece extends BaseItem {
         this.y = y;
         this.width = width;
         this.height = height;
+        type = "Headpiece";
         name = "Legendary Head Piece";
         ability = new BaseAbility("Brace", 0, 9, 3, 85, "resources/Sprites/UI elements/Headpieces/LegendaryHeadPiece.png");
     }

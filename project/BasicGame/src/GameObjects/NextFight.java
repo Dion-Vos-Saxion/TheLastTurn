@@ -25,14 +25,15 @@ public class NextFight extends GameObject {
 
     public void loop() {
         if (MouseHandler.getInstance().clicked(x + width / 2, y + height / 2, width, height)) {
-            SceneManager.getInstance().newGame();
+            SceneManager.getInstance().nextLevel();
             nextFight(SceneManager.getInstance().player);
-            System.out.println("Clicked");
         }
     }
 
     public void nextFight(Player player) {
-        player.ChangeGear(item);
+        if (item != null) {
+            player.ChangeGear(item);
+        }
     }
 
     public void draw() {

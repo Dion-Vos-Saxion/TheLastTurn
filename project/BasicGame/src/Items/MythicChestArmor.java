@@ -10,6 +10,7 @@ public class MythicChestArmor extends BaseItem {
         this.y = y;
         this.width = width;
         this.height = height;
+        type = "ChestArmor";
         name = "Mythic Chest Armor";
         ability = new BaseAbility("Block", 0, 18, 8, 90, "resources/Sprites/UI elements/ChestArmors/MythicChestArmor.png");
     }

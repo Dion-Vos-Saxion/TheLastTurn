@@ -10,6 +10,7 @@ public class UncommonWeapon extends BaseItem {
         this.y = y;
         this.width = width;
         this.height = height;
+        type = "Weapon";
         name = "Uncommon Weapon";
         ability = new BaseAbility("Stab", 8, 0, 2, 60, "resources/Sprites/UI elements/Weapon/UncommonSword.png");
     }

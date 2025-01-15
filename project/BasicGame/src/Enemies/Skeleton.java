@@ -19,7 +19,7 @@ public class Skeleton extends BaseEnemy {
         this.width = width;
         this.height = height;
 
-        maxHealth = 25;
+        maxHealth = 1;
         health = maxHealth;
         enemyName = "Skeleton";
         attacks = new int[]{10, 3, 2};
