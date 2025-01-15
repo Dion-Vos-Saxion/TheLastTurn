@@ -99,8 +99,8 @@ public class GameScene extends Scene {
         }
         while (optionOne == optionTwo);
 
-        choiceOne = new ItemChoice(200, 800, optionOne);
-        choiceTwo = new ItemChoice(700, 800, optionTwo);
+        choiceOne = new ItemChoice(50, 650, optionOne);
+        choiceTwo = new ItemChoice(550, 650, optionTwo);
         choiceOne.setOtherItem(choiceTwo);
         choiceTwo.setOtherItem(choiceOne);
 
@@ -160,13 +160,51 @@ public class GameScene extends Scene {
         endTurnButton.x = -100;
         SaxionApp.drawText("Victory!",375, 500, 90);
         SaxionApp.drawText("choose your prize",375, 600, 40);
+        SaxionApp.drawText("current gear", 425, 775, 30);
+        SaxionApp.setTextDrawingColor(Color.WHITE);
+        for (int i = 0; i < player.items.length; i++){
+            if (player.items[i].type.equalsIgnoreCase(choiceOne.item.type)){
+                SaxionApp.setTextDrawingColor(Color.WHITE);
+                SaxionApp.setFill(Color.BLACK);
+                int x = 50;
+                int y = 750;
+                SaxionApp.drawRectangle(x, y, 300, 100);
+                SaxionApp.drawText(player.items[i].name, x + 10, y + 10, 30);
+
+                SaxionApp.setTextDrawingColor(Color.GRAY);
+                SaxionApp.drawText(Integer.toString(player.items[i].ability.defense), x+ 95, y+ 60, 24);
+                SaxionApp.setTextDrawingColor(Color.RED);
+                SaxionApp.drawText(Integer.toString(player.items[i].ability.attack), x + 135, y+ 60, 24);
+                SaxionApp.setTextDrawingColor(Color.BLUE);
+                SaxionApp.drawText(Integer.toString(player.items[i].ability.staminaCost), x + 165, y + 60, 24);
+                SaxionApp.setTextDrawingColor(Color.WHITE);
+                SaxionApp.drawText(Integer.toString(player.items[i].ability.hitChance) + "%", x + 185, y + 60, 24);
+            }
+            if (player.items[i].type.equalsIgnoreCase(choiceTwo.item.type)){
+                SaxionApp.setTextDrawingColor(Color.WHITE);
+                SaxionApp.setFill(Color.BLACK);
+                int x = 650;
+                int y = 750;
+                SaxionApp.drawRectangle(x, y, 300, 100);
+                SaxionApp.drawText(player.items[i].name, x + 10, y + 10, 30);
+
+                SaxionApp.setTextDrawingColor(Color.GRAY);
+                SaxionApp.drawText(Integer.toString(player.items[i].ability.defense), x+ 95, y+ 60, 24);
+                SaxionApp.setTextDrawingColor(Color.RED);
+                SaxionApp.drawText(Integer.toString(player.items[i].ability.attack), x + 135, y+ 60, 24);
+                SaxionApp.setTextDrawingColor(Color.BLUE);
+                SaxionApp.drawText(Integer.toString(player.items[i].ability.staminaCost), x + 165, y + 60, 24);
+                SaxionApp.setTextDrawingColor(Color.WHITE);
+                SaxionApp.drawText(Integer.toString(player.items[i].ability.hitChance) + "%", x + 185, y + 60, 24);
+            }
+        }
 
         choiceOne.loop();
         choiceTwo.loop();
         choiceOne.draw();
         choiceTwo.draw();
 
-        NextFight nextfight = new NextFight(512, 800, 256, 64, "resources/Sprites/startgame-W128-H64.png");
+        NextFight nextfight = new NextFight(512, 950, 256, 64, "resources/Sprites/startgame-W128-H64.png");
 
         if (choiceOne.chosen)
             nextfight.item = choiceOne.item;

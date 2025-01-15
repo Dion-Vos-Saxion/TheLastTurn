@@ -24,7 +24,7 @@ public class NextFight extends GameObject {
     }
 
     public void loop() {
-        if (MouseHandler.getInstance().clicked(x + width / 2, y + height / 2, width, height)) {
+        if (MouseHandler.getInstance().clicked(x, y, width, height)) {
             SceneManager.getInstance().nextLevel();
             nextFight(SceneManager.getInstance().player);
         }
