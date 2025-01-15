@@ -25,6 +25,13 @@ public class GameScene extends Scene {
             new GameImage(512, 512, 1024, 1024, "resources/Sprites/UI elements/Fight-Backgrounds/Fight-Background-2.png"),
             new GameImage(512, 512, 1024, 1024, "resources/Sprites/UI elements/Fight-Backgrounds/Fight-Background-3.png")
     };
+<<<<<<< Updated upstream
+=======
+
+    private ItemChoice choiceOne;
+    private ItemChoice choiceTwo;
+
+>>>>>>> Stashed changes
 
     public GameScene(Player player, int level) {
         playerTurn = new PlayerTurn();
