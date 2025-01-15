@@ -37,6 +37,15 @@ public class GameScene extends Scene {
 
         Random random = new Random();
 
+        items = new BaseItem[]{
+                new BasicHeadpiece(player.UISlots[0][0], player.UISlots[0][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+                new BasicChestArmor(player.UISlots[1][0], player.UISlots[1][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
+                new BasicTrousers(player.UISlots[2][0], player.UISlots[2][1], player.UIButtonsSize[0],player.UIButtonsSize[1]),
+                new BasicWeapon(player.UISlots[3][0], player.UISlots[3][1], player.UIButtonsSize[0], player.UIButtonsSize[1])
+        };
+
+        Random random = new Random();
+
         endTurnButton = new EndTurnButton(840, 940, 152, 68, "resources/Sprites/UI elements/End turn Button.png");
         gameObjects = new GameObject[6];
         gameObjects[0] = backgrounds[random.nextInt(backgrounds.length)];
