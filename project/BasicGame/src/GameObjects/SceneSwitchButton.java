@@ -19,6 +19,8 @@ public class SceneSwitchButton extends GameObject {
 
     public void loop() {
         if (MouseHandler.getInstance().clicked(x, y, width, height)){
+            Sound menuClick = new Sound("resources/Sounds/menuSoundClick.wav");
+            menuClick.play();
             if (sceneIndex == -1)
                 SaxionApp.quit();
             else if(sceneIndex == 1)

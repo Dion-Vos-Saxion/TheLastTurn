@@ -6,6 +6,7 @@ import utils.*;
 import GameObjects.*;
 
 import java.awt.*;
+import java.util.Random;
 
 public class GameScene extends Scene {
     private Player player;
@@ -16,7 +17,14 @@ public class GameScene extends Scene {
     private Turn enemyTurn;
     private int level;
     Sound sound = new Sound("resources/Sounds/CombatBackgroundMusic.wav");
+    Sound attackSound = new Sound("resources/Sounds/attackSound.wav");
+    Sound blockSound = new Sound("resources/Sounds/blockSound.wav");
 
+    GameImage[] backgrounds = new GameImage[]{
+            new GameImage(512, 512, 1024, 1024, "resources/Sprites/UI elements/Fight-Backgrounds/Fight-Background-1.png"),
+            new GameImage(512, 512, 1024, 1024, "resources/Sprites/UI elements/Fight-Backgrounds/Fight-Background-2.png"),
+            new GameImage(512, 512, 1024, 1024, "resources/Sprites/UI elements/Fight-Backgrounds/Fight-Background-3.png")
+    };
 
     public GameScene(Player player, int level) {
         playerTurn = new PlayerTurn();
@@ -27,9 +35,11 @@ public class GameScene extends Scene {
         this.player = player;
         enemy = new Minotaur(600, 100, 400, 400);
 
+        Random random = new Random();
+
         endTurnButton = new EndTurnButton(840, 940, 152, 68, "resources/Sprites/UI elements/End turn Button.png");
         gameObjects = new GameObject[6];
-        gameObjects[0] = new GameImage(512, 512, 1024, 1024, "resources/Sprites/Fight-Background-1.png");
+        gameObjects[0] = backgrounds[random.nextInt(backgrounds.length)];
         gameObjects[1] = endTurnButton;
         gameObjects[2] = player;
         gameObjects[3] = enemy;
@@ -65,7 +75,6 @@ public class GameScene extends Scene {
         SaxionApp.drawText("Game Over",275, 600, 90);
         SceneSwitchButton exit = new SceneSwitchButton(512, 900,256, 64, "resources/Sprites/exitgame-W128-H64.png", -1);
         SceneSwitchButton startGame = new SceneSwitchButton(512, 800, 256, 64, "resources/Sprites/startgame-W128-H64.png", 1);
-
         exit.loop();
         exit.draw();
         startGame.loop();
@@ -96,6 +105,10 @@ public class GameScene extends Scene {
                         enemy.TakeDamage(item.ability.attack);
                     if (item.ability.defense > 0)
                         player.GainBlock(item.ability.defense);
+                    if (item.ability.attack > item.ability.defense)
+                        attackSound.play();
+                    else
+                        blockSound.play();
                 }
             }
 
@@ -119,6 +132,7 @@ public class GameScene extends Scene {
         public void StartTurn() {
 
         }
+
 
         public void loop() {
             if (enemy.currentIsAttacking) {
