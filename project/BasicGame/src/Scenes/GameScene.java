@@ -28,9 +28,9 @@ public class GameScene extends Scene {
     private BaseItem optionOne;
     private BaseItem optionTwo;
     GameImage[] backgrounds = new GameImage[]{
-            new GameImage(512, 512, 1024, 1024, "resources/Sprites/UI elements/Fight-Backgrounds/Fight-Background-1.png"),
-            new GameImage(512, 512, 1024, 1024, "resources/Sprites/UI elements/Fight-Backgrounds/Fight-Background-2.png"),
-            new GameImage(512, 512, 1024, 1024, "resources/Sprites/UI elements/Fight-Backgrounds/Fight-Background-3.png")
+            new GameImage(512, 512, 1024, 1024, "resources/Sprites/UI elements/Fight-Backgrounds/Fight-Background-1.png", "one"),
+            new GameImage(512, 512, 1024, 1024, "resources/Sprites/UI elements/Fight-Backgrounds/Fight-Background-2.png", "Two"),
+            new GameImage(512, 512, 1024, 1024, "resources/Sprites/UI elements/Fight-Backgrounds/Fight-Background-3.png", "Three"),
     };
 
     private ItemChoice choiceOne;
@@ -65,14 +65,37 @@ public class GameScene extends Scene {
         choiceOne.setOtherItem(choiceTwo);
         choiceTwo.setOtherItem(choiceOne);
 
+        Vuurtje vuurtje1;
+        Vuurtje vuurtje2;
+
+        GameImage background = backgrounds[1];//backgrounds[random.nextInt(backgrounds.length)];
+        switch (background.name){
+            case "One":
+                vuurtje1 = new Vuurtje(375, -72);
+                vuurtje2 = new Vuurtje(840, -2);
+                break;
+            case "Two" :
+                vuurtje1 = new Vuurtje(200, 100);
+                vuurtje2 = new Vuurtje(80, 100);
+                break;
+            case "Three":
+                vuurtje1 = new Vuurtje(100, 100);
+                vuurtje2 = new Vuurtje(100, 100);
+                break;
+            default:
+                vuurtje1 = new Vuurtje(100, 100);
+                vuurtje2 = new Vuurtje(100, 100);
+                break;
+        }
+
         endTurnButton = new EndTurnButton(840, 940, 152, 68, "resources/Sprites/UI elements/End turn Button.png");
         gameObjects = new GameObject[6];
-        gameObjects[0] = backgrounds[random.nextInt(backgrounds.length)];
+        gameObjects[0] = background;
         gameObjects[1] = endTurnButton;
         gameObjects[2] = player;
         gameObjects[3] = enemy;
-        gameObjects[4] = new Vuurtje(375,-72);
-        gameObjects[5] = new Vuurtje(840,-2);
+        gameObjects[4] = vuurtje1;
+        gameObjects[5] = vuurtje2;
 
     }
 
