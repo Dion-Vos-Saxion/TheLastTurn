@@ -10,6 +10,7 @@ public abstract class BaseItem {
     public int width;
     public int height;
     public String name;
+    public String type;
     public String buttonBackground = "resources/Sprites/UI elements/AbilityHolder.png";
     public BaseAbility ability;
 

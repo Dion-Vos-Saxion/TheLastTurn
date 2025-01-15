@@ -14,10 +14,10 @@ public class Player extends GameObject {
     private int maxStamina = 10;
     public int stamina = maxStamina;
 
-    public BaseHeadpiece headpiece;
-    public BaseChestArmor chestArmor;
-    public BaseTrousers trousers;
-    public BaseWeapon weapon;
+    public BaseItem headpiece;
+    public BaseItem chestArmor;
+    public BaseItem trousers;
+    public BaseItem weapon;
 
     public GaugeBar healthBar;
     public GaugeBar staminaBar;
@@ -91,13 +91,12 @@ public class Player extends GameObject {
     }
 
     public void draw() {
-        if (health <= 0)
-            DrawDeathUI();
-
         playerAnimator.draw();
     }
 
     public void DrawBottomUI(){
+        if (health <= 0)
+            return;
         SaxionApp.drawImage(UIBackgroundSprite, 12, 600, 999, 408);
         SaxionApp.drawImage(UIBackgroundSprite, 690, 620, 300, 368);
         SaxionApp.setTextDrawingColor(Color.WHITE);
@@ -120,7 +119,14 @@ public class Player extends GameObject {
         }
     }
 
-    public void DrawDeathUI(){
-
+    public void ChangeGear(BaseItem item){
+        if (item == null)
+            return;
+        for (BaseItem i : items){
+            if (i.type.equals(item.type)){
+                i = item;
+                return;
+            }
+        }
     }
 }

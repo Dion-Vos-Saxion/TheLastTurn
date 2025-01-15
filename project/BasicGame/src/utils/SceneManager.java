@@ -11,7 +11,7 @@ public final class SceneManager {
     private  Scene menuScene;
     private Scene currentScene;
 
-    private Player player;
+    public Player player;
 
     public static SceneManager getInstance() {
         if (instance == null)

@@ -30,8 +30,6 @@ public final class MouseHandler {
         }
         if (mouseEvent.isMouseDragging())
             clickLeft = false;
-        if (clickLeft)
-            System.out.println(mouseX);
     }
 
     public void afterupdate(){

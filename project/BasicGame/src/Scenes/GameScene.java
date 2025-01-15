@@ -79,8 +79,14 @@ public class GameScene extends Scene {
             gameObject.draw();
         }
 
-        DrawGameOver();
-        DrawWin();
+        if (player.health <= 0)
+            DrawGameOver();
+        if (enemy.health <= 0)
+            DrawWin();
+
+        if (enemy.health > 0 && player.health > 0){
+            player.DrawBottomUI();
+        }
 
         currentTurn.loop();
     }
@@ -90,8 +96,6 @@ public class GameScene extends Scene {
     }
 
     public void DrawGameOver() {
-        if (player.health > 0)
-            return;
         endTurnButton.x = -100;
         SaxionApp.drawText("Game Over",275, 600, 90);
         SceneSwitchButton exit = new SceneSwitchButton(512, 900,256, 64, "resources/Sprites/exitgame-W128-H64.png", -1);
@@ -104,10 +108,6 @@ public class GameScene extends Scene {
     }
 
     public void DrawWin(){
-        if (enemy.health > 0){
-            player.DrawBottomUI();
-            return;
-        }
         endTurnButton.x = -100;
         SaxionApp.drawText("Victory!",275, 600, 90);
         SaxionApp.drawText("choose your prize",250, 700, 40);
@@ -116,6 +116,16 @@ public class GameScene extends Scene {
         choiceTwo.loop();
         choiceOne.draw();
         choiceTwo.draw();
+
+        NextFight nextfight = new NextFight(512, 800, 256, 64, "resources/Sprites/startgame-W128-H64.png");
+
+        if (choiceOne.chosen)
+            nextfight.item = choiceOne.item;
+        if (choiceTwo.chosen)
+            nextfight.item = choiceTwo.item;
+
+        nextfight.loop();
+        nextfight.draw();
     }
 
 
