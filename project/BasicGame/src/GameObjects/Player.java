@@ -11,7 +11,7 @@ public class Player extends GameObject {
     public int maxHealth = 25;
     public int health = maxHealth;
     private int block;
-    public int maxStamina = 10;
+    public int maxStamina = 20;
     public int stamina = maxStamina;
 
     public BaseItem headpiece;
