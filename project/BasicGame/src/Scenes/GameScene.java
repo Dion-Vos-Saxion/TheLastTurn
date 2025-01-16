@@ -68,21 +68,24 @@ public class GameScene extends Scene {
 
         GameImage background = backgrounds[random.nextInt(backgrounds.length)];
 
-        if ("One".equals(background.name)) {
-            vuurtje1 = new Vuurtje(375, -72);
-            vuurtje2 = new Vuurtje(840, -2);
-        } else if ("Two".equals(background.name)) {
-            vuurtje1 = new Vuurtje(841, 40);
-            vuurtje2 = new Vuurtje(65, 42);
-        }
-
-        if (vuurtje1 != null && vuurtje2 != null) {
-            gameObjects = new GameObject[]{background, endTurnButton, player, enemy, vuurtje1, vuurtje2};
-        } else {
-            gameObjects = new GameObject[]{background, endTurnButton, player, enemy};
+        switch (background.name) {
+            case "One":
+                vuurtje1 = new Vuurtje(375, -72);
+                vuurtje2 = new Vuurtje(840, -2);
+                break;
+            case "Two":
+                vuurtje1 = new Vuurtje(841, 40);
+                vuurtje2 = new Vuurtje(65, 42);
+                break;
+            default:
+                vuurtje1 = new Vuurtje(30000000, 1000000000);
+                vuurtje2 = new Vuurtje(10000000, 100000000);
+                break;
         }
 
         endTurnButton = new EndTurnButton(840, 940, 152, 68, "resources/Sprites/UI elements/End turn Button.png");
+
+       gameObjects = new GameObject[]{background, endTurnButton, player, enemy, vuurtje1, vuurtje2};
     }
 
     public void init() {
