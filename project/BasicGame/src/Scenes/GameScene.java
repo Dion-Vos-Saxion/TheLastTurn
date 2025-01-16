@@ -28,14 +28,13 @@ public class GameScene extends Scene {
     private BaseItem optionOne;
     private BaseItem optionTwo;
     GameImage[] backgrounds = new GameImage[]{
-            new GameImage(512, 512, 1024, 1024, "resources/Sprites/UI elements/Fight-Backgrounds/Fight-Background-1.png", "one"),
+            new GameImage(512, 512, 1024, 1024, "resources/Sprites/UI elements/Fight-Backgrounds/Fight-Background-1.png", "One"),
             new GameImage(512, 512, 1024, 1024, "resources/Sprites/UI elements/Fight-Backgrounds/Fight-Background-2.png", "Two"),
             new GameImage(512, 512, 1024, 1024, "resources/Sprites/UI elements/Fight-Backgrounds/Fight-Background-3.png", "Three"),
     };
 
     private ItemChoice choiceOne;
     private ItemChoice choiceTwo;
-
 
     public GameScene(Player player, int level) {
         playerTurn = new PlayerTurn();
@@ -55,48 +54,35 @@ public class GameScene extends Scene {
 
         Random random = new Random();
         optionOne = items[random.nextInt(items.length)];
-        do{
+        do {
             optionTwo = items[random.nextInt(items.length)];
-        }
-        while (optionOne == optionTwo);
+        } while (optionOne == optionTwo);
 
         choiceOne = new ItemChoice(200, 800, optionOne);
         choiceTwo = new ItemChoice(700, 800, optionTwo);
         choiceOne.setOtherItem(choiceTwo);
         choiceTwo.setOtherItem(choiceOne);
 
-        Vuurtje vuurtje1;
-        Vuurtje vuurtje2;
+        Vuurtje vuurtje1 = null;
+        Vuurtje vuurtje2 = null;
 
-        GameImage background = backgrounds[1];//backgrounds[random.nextInt(backgrounds.length)];
-        switch (background.name){
-            case "One":
-                vuurtje1 = new Vuurtje(375, -72);
-                vuurtje2 = new Vuurtje(840, -2);
-                break;
-            case "Two" :
-                vuurtje1 = new Vuurtje(200, 100);
-                vuurtje2 = new Vuurtje(80, 100);
-                break;
-            case "Three":
-                vuurtje1 = new Vuurtje(100, 100);
-                vuurtje2 = new Vuurtje(100, 100);
-                break;
-            default:
-                vuurtje1 = new Vuurtje(100, 100);
-                vuurtje2 = new Vuurtje(100, 100);
-                break;
+        GameImage background = backgrounds[random.nextInt(backgrounds.length)];
+
+        if ("One".equals(background.name)) {
+            vuurtje1 = new Vuurtje(375, -72);
+            vuurtje2 = new Vuurtje(840, -2);
+        } else if ("Two".equals(background.name)) {
+            vuurtje1 = new Vuurtje(841, 40);
+            vuurtje2 = new Vuurtje(65, 42);
+        }
+
+        if (vuurtje1 != null && vuurtje2 != null) {
+            gameObjects = new GameObject[]{background, endTurnButton, player, enemy, vuurtje1, vuurtje2};
+        } else {
+            gameObjects = new GameObject[]{background, endTurnButton, player, enemy};
         }
 
         endTurnButton = new EndTurnButton(840, 940, 152, 68, "resources/Sprites/UI elements/End turn Button.png");
-        gameObjects = new GameObject[6];
-        gameObjects[0] = background;
-        gameObjects[1] = endTurnButton;
-        gameObjects[2] = player;
-        gameObjects[3] = enemy;
-        gameObjects[4] = vuurtje1;
-        gameObjects[5] = vuurtje2;
-
     }
 
     public void init() {
@@ -105,8 +91,10 @@ public class GameScene extends Scene {
 
     public void loop() {
         for (GameObject gameObject : gameObjects) {
-            gameObject.loop();
-            gameObject.draw();
+            if (gameObject != null) {
+                gameObject.loop();
+                gameObject.draw();
+            }
         }
 
         if (player.health <= 0)
@@ -114,7 +102,7 @@ public class GameScene extends Scene {
         if (enemy.health <= 0)
             DrawWin();
 
-        if (enemy.health > 0 && player.health > 0){
+        if (enemy.health > 0 && player.health > 0) {
             player.DrawBottomUI();
         }
 
@@ -127,8 +115,8 @@ public class GameScene extends Scene {
 
     public void DrawGameOver() {
         endTurnButton.x = -100;
-        SaxionApp.drawText("Game Over",275, 600, 90);
-        SceneSwitchButton exit = new SceneSwitchButton(512, 900,256, 64, "resources/Sprites/exitgame-W128-H64.png", -1);
+        SaxionApp.drawImage("resources/Sprites/UI elements/GameOverText.png", 350, 650, 338, 35);
+        SceneSwitchButton exit = new SceneSwitchButton(512, 900, 256, 64, "resources/Sprites/exitgame-W128-H64.png", -1);
         SceneSwitchButton startGame = new SceneSwitchButton(512, 800, 256, 64, "resources/Sprites/startgame-W128-H64.png", 1);
         exit.loop();
         exit.draw();
@@ -136,10 +124,10 @@ public class GameScene extends Scene {
         startGame.draw();
     }
 
-    public void DrawWin(){
+    public void DrawWin() {
         endTurnButton.x = -100;
-        SaxionApp.drawText("Victory!",275, 600, 90);
-        SaxionApp.drawText("choose your prize",250, 700, 40);
+        SaxionApp.drawText("Victory!", 275, 600, 90);
+        SaxionApp.drawText("choose your prize", 250, 700, 40);
 
         choiceOne.loop();
         choiceTwo.loop();
@@ -156,7 +144,6 @@ public class GameScene extends Scene {
         nextfight.loop();
         nextfight.draw();
     }
-
 
     private abstract class Turn {
         public abstract void StartTurn();
@@ -202,11 +189,7 @@ public class GameScene extends Scene {
     }
 
     private class EnemyTurn extends Turn {
-
-        public void StartTurn() {
-
-        }
-
+        public void StartTurn() {}
 
         public void loop() {
             if (enemy.currentIsAttacking) {
