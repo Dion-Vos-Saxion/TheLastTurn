@@ -16,11 +16,11 @@ public class Minotaur extends BaseEnemy {
         this.width = width;
         this.height = height;
 
-        maxHealth = 3;
+        maxHealth = 70;
         health = maxHealth;
         enemyName = "Minotaur";
-        attacks = new int[]{11, 5, 3};
-        blocks = new int[]{22, 2, 7};
+        attacks = new int[]{20, 11, 7};
+        blocks = new int[]{30, 25, 15};
         NewAction();
 
         sprite = "resources/Sprites/Enemies/Minotaur/Idle/minotaur-idle1.png";

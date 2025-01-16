@@ -19,11 +19,11 @@ public class Skeleton extends BaseEnemy {
         this.width = width;
         this.height = height;
 
-        maxHealth = 1;
+        maxHealth = 50;
         health = maxHealth;
         enemyName = "Skeleton";
-        attacks = new int[]{10, 3, 2};
-        blocks = new int[]{25, 5, 8};
+        attacks = new int[]{15, 5, 4};
+        blocks = new int[]{20, 15, 12};
         NewAction();
 
         sprite = "resources/Sprites/Enemies/Skeleton/Idle/Skeleton1.png";

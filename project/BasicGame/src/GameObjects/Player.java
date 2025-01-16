@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class Player extends GameObject {
 
-    public int maxHealth = 1;
+    public int maxHealth = 25;
     public int health = maxHealth;
     private int block;
     public int maxStamina = 10;

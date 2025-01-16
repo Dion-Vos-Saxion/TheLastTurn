@@ -16,11 +16,11 @@ public class Bat extends BaseEnemy {
         this.width = width;
         this.height = height;
 
-        maxHealth = 1;
+        maxHealth = 30;
         health = maxHealth;
         enemyName = "Bat";
-        attacks = new int[]{15, 5, 4};
-        blocks = new int[]{20, 3, 6};
+        attacks = new int[]{11, 3, 2};
+        blocks = new int[]{26, 17, 9};
         NewAction();
 
         sprite = "resources/Sprites/Enemies/Bat/Idle/Bat1.png";
