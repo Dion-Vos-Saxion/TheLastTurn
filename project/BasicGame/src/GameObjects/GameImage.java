@@ -5,6 +5,7 @@ import utils.GameObject;
 public class GameImage extends GameObject {
 
     String image;
+    public String name;
 
     public GameImage(int x, int y, int width, int height, String image) {
         this.x = x;
@@ -12,6 +13,15 @@ public class GameImage extends GameObject {
         this.width = width;
         this.height = height;
         this.image = image;
+    }
+
+    public GameImage(int x, int y, int width, int height, String image, String name) {
+        this.x = x;
+        this.y = y;
+        this.width = width; 
+        this.height = height;
+        this.image = image;
+        this.name = name;
     }
 
     public void init(){
