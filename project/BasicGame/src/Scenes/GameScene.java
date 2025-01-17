@@ -55,6 +55,9 @@ public class GameScene extends Scene {
         this.player = player;
         enemy = enemies[random.nextInt(enemies.length)];
 
+        enemy.health += (enemy.health / 10) * level;
+        System.out.println(enemy.health);
+
         items = new BaseItem[]{
                 new BasicHeadpiece(player.UISlots[0][0], player.UISlots[0][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
                 new BasicChestArmor(player.UISlots[1][0], player.UISlots[1][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),

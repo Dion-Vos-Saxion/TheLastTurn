@@ -12,7 +12,7 @@ public class BasicWeapon extends BaseItem {
         this.height = height;
         type = "Weapon";
         name = "Basic Weapon";
-        ability = new BaseAbility("Stab", 5, 0, 2, 60,"resources/Sprites/UI elements/Weapons/BaseSword.png");
+        ability = new BaseAbility("Stab", 5, 0, 2, 80,"resources/Sprites/UI elements/Weapons/BaseSword.png");
     }
 
     @Override

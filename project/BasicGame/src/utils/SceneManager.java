@@ -12,6 +12,7 @@ public final class SceneManager {
     private Scene currentScene;
 
     public Player player;
+    private int level = 1;
 
     public static SceneManager getInstance() {
         if (instance == null)
@@ -31,6 +32,7 @@ public final class SceneManager {
     }
 
     public void newGame(){
+        level = 1;
         player = new Player(110, 260, 100, 153);
         currentScene.unInit();
         currentScene = new GameScene(player, 1);
@@ -38,8 +40,9 @@ public final class SceneManager {
     }
 
     public void nextLevel(){
+        level++;
         currentScene.unInit();
-        currentScene = new GameScene(player, 1);
+        currentScene = new GameScene(player, level);
         currentScene.init();
     }
 }
