@@ -12,7 +12,7 @@ public final class SceneManager {
     private Scene currentScene;
 
     public Player player;
-    private int level = 1;
+    public int level = 1;
 
     public static SceneManager getInstance() {
         if (instance == null)

@@ -167,6 +167,7 @@ public class GameScene extends Scene {
         SaxionApp.drawImage("resources/Sprites/UI elements/GameOverText.png", 350, 650, 338, 35);
         SceneSwitchButton exit = new SceneSwitchButton(512, 900, 256, 64, "resources/Sprites/exitgame-W128-H64.png", -1);
         SceneSwitchButton startGame = new SceneSwitchButton(512, 800, 256, 64, "resources/Sprites/startgame-W128-H64.png", 1);
+        SaxionApp.drawText("Level reached: " + Integer.toString(SceneManager.getInstance().level), 420, 700, 24);
         exit.loop();
         exit.draw();
         startGame.loop();
