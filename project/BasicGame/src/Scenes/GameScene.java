@@ -56,7 +56,13 @@ public class GameScene extends Scene {
         enemy = enemies[random.nextInt(enemies.length)];
 
         enemy.health += (enemy.health / 10) * level;
-        System.out.println(enemy.health);
+        for (int i = 0; i < enemy.attacks.length; i++){
+            enemy.attacks[i] += 5;
+        }
+        for (int i = 0; i < enemy.blocks.length; i++){
+            enemy.blocks[i] += 5;
+        }
+        System.out.println(enemy.attacks[0]);
 
         items = new BaseItem[]{
                 new BasicHeadpiece(player.UISlots[0][0], player.UISlots[0][1], player.UIButtonsSize[0], player.UIButtonsSize[1]),
