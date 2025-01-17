@@ -57,10 +57,10 @@ public class GameScene extends Scene {
 
         enemy.health += (enemy.health / 10) * level;
         for (int i = 0; i < enemy.attacks.length; i++){
-            enemy.attacks[i] += 5;
+            enemy.attacks[i] += 5 * level;
         }
         for (int i = 0; i < enemy.blocks.length; i++){
-            enemy.blocks[i] += 5;
+            enemy.blocks[i] += 5 * level;
         }
         System.out.println(enemy.attacks[0]);
 
