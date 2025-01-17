@@ -21,7 +21,7 @@ public class Skeleton extends BaseEnemy {
 
         maxHealth = 50;
         health = maxHealth;
-        enemyName = "Skeleton";
+        enemyName = "Jeffrey The Third";
         attacks = new int[]{15, 5, 4};
         blocks = new int[]{20, 15, 12};
         NewAction();

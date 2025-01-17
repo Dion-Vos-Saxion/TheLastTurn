@@ -18,7 +18,7 @@ public class Minotaur extends BaseEnemy {
 
         maxHealth = 70;
         health = maxHealth;
-        enemyName = "Minotaur";
+        enemyName = "Paulina";
         attacks = new int[]{20, 11, 7};
         blocks = new int[]{30, 25, 15};
         NewAction();

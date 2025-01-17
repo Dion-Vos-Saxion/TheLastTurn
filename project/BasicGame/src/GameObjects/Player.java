@@ -130,6 +130,9 @@ public class Player extends GameObject {
 
         staminaBar.draw();
         healthBar.draw();
+        SaxionApp.setTextDrawingColor(Color.WHITE);
+        SaxionApp.drawText(Integer.toString(health),80, 420, 16);
+        SaxionApp.drawText(Integer.toString(stamina),820, 852, 32);
 
         if (block > 0) {
             SaxionApp.setBorderColor(Color.GRAY);

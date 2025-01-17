@@ -73,7 +73,7 @@ public abstract class BaseEnemy extends GameObject {
     public void DrawName(){
         SaxionApp.setFill(Color.BLACK);
         SaxionApp.setBorderColor(Color.BLACK);
-        SaxionApp.drawRectangle(700, 437, 110, 25);
+        SaxionApp.drawRectangle(700, 437, 210, 25);
 
         SaxionApp.setTextDrawingColor(Color.WHITE);
         SaxionApp.drawText(enemyName, 700, 437, 28);
@@ -87,5 +87,8 @@ public abstract class BaseEnemy extends GameObject {
             SaxionApp.setTextDrawingColor(Color.BLACK);
             SaxionApp.drawText(Integer.toString(block), x + width - 30, y + height - 80, 28);
         }
+        SaxionApp.setTextDrawingColor(Color.WHITE);
+        if (health > 0)
+            SaxionApp.drawText(Integer.toString(health), 940, 420, 16);
     }
 }

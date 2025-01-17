@@ -18,7 +18,7 @@ public class Bat extends BaseEnemy {
 
         maxHealth = 30;
         health = maxHealth;
-        enemyName = "Bat";
+        enemyName = "Batwoman";
         attacks = new int[]{11, 3, 2};
         blocks = new int[]{26, 17, 9};
         NewAction();
