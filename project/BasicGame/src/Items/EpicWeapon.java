@@ -12,7 +12,7 @@ public class EpicWeapon extends BaseItem {
         this.height = height;
         type = "Weapon";
         name = "Epic Weapon";
-        ability = new BaseAbility("Stab", 9, 0, 3, 80, "resources/Sprites/UI elements/Weapons/EpicSword.png");
+        ability = new BaseAbility("Stab", 15, 0, 1, 90, "resources/Sprites/UI elements/Weapons/EpicSword.png");
     }
 
     @Override

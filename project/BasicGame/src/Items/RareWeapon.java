@@ -12,7 +12,7 @@ public class RareWeapon extends BaseItem {
         this.height = height;
         type = "Weapon";
         name = "Rare Weapon";
-        ability = new BaseAbility("Stab", 8, 0, 1, 70, "resources/Sprites/UI elements/Weapons/RareSword.png");
+        ability = new BaseAbility("Stab", 50, 0, 5, 50, "resources/Sprites/UI elements/Weapons/RareSword.png");
     }
 
     @Override

@@ -12,7 +12,7 @@ public class LegendaryWeapon extends BaseItem {
         this.height = height;
         type = "Weapon";
         name = "Legendary Weapon";
-        ability = new BaseAbility("Stab", 12, 0, 5, 85, "resources/Sprites/UI elements/Weapons/LegendaryWeapon.png");
+        ability = new BaseAbility("Stab", 200, 0, 10, 40, "resources/Sprites/UI elements/Weapons/LegendaryWeapon.png");
     }
 
     @Override

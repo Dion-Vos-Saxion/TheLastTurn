@@ -12,7 +12,7 @@ public class CommonChestArmor extends BaseItem {
         this.height = height;
         type = "ChestArmor";
         name = "Common Chest Armor";
-        ability = new BaseAbility("Block", 0, 8, 3, 75,"resources/Sprites/UI elements/ChestArmors/CommonArmorPiece.png");
+        ability = new BaseAbility("Big Block", 0, 20, 2, 40,"resources/Sprites/UI elements/ChestArmors/CommonArmorPiece.png");
     }
 
     public void loop() {

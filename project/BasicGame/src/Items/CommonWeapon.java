@@ -12,7 +12,7 @@ public class CommonWeapon extends BaseItem {
         this.height = height;
         type = "Weapon";
         name = "Basic Weapon";
-        ability = new BaseAbility("Slash", 8, 0, 3, 55,"resources/Sprites/UI elements/Weapons/CommonSword.png");
+        ability = new BaseAbility("Slash", 30, 0, 3, 55,"resources/Sprites/UI elements/Weapons/CommonSword.png");
     }
 
     @Override
